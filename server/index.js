@@ -8,7 +8,7 @@ import session from 'express-session'
 import './strategies/localStrategy.js'
 
 // init express
-const app = new express();
+const app = express();
 const port = 3001;
 
 app.use(express.json());
@@ -23,7 +23,7 @@ app.use(session({
 }));
 
 app.use(passport.initialize())
-app.use(passport.session())
+app.use(passport.authenticate("session"));
 
 // Stores the map in the server's cache since it will be the same for every player.
 const map = await getMap();
@@ -39,20 +39,27 @@ app.listen(port, () => {
 
 // POST /api/sessions
 // Purpose: Authenticate the user and create a session
-app.post('/api/sessions', (req, res) => {
-  
+app.post('/api/sessions', passport.authenticate("local"), (req, res) => {
+  return res.status(201).json(req.user);
 });
 
 // GET /api/sessions/current
 // Purpose: Check if the user is currently logged in
 app.get('/api/sessions/current', (req, res) => {
-
+  if(req.isAuthenticated()) {
+    res.json(req.user)
+  }
+  else {
+    res.status(401).json({error: "Not authentificated"})
+  }
 });
 
 // DELETE /api/sessions/current
 // Purpose: Logout the current user and destroy the session
 app.delete('/api/sessions/current', (req, res) => {
-
+  req.logout(() => {
+    res.end()
+  })
 });
 
 // --------------------------------
