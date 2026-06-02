@@ -35,7 +35,8 @@
     ```json
     {
       "id": 1,
-      "username": "player1"
+      "username": "player1",
+      "bestScore": 20
     }
     ```
   - status codes: `200 OK`, `401 Unauthorized`
@@ -56,8 +57,8 @@
         "stations": [...],
         "lines": [...]
       },
-      "startStation": "Centrale",
-      "destinationStation": "Campo dell'Eco"
+      "startStation": "Charpennes",
+      "destinationStation": "Vieux-Lyon"
     }
     ```
   - status codes: `200 OK`, `401 Unauthorized`, `500 Internal Server Error`
@@ -67,9 +68,9 @@
     ```json
     {
       "route": [
-        "Centrale",
-        "Porta Velaria",
-        "Fontana Oscura"
+        "Charpennes",
+        "Bellecour",
+        "Vieux-Lyon"
       ]
     }
     ```
@@ -77,14 +78,15 @@
     ```json
     {
       "valid": true,
-      "eventsLog": [
+      "finalScore": 21,
+      "journeySteps": [
         {
           "step": 1,
           "event": "Kind passenger",
           "effect": 1
         }
       ],
-      "finalScore": 21
+      "isNewRecord": true
     }
     ```
   - status codes: `200 OK`, `400 Bad Request`, `401 Unauthorized`, `500 Internal Server Error`
@@ -95,16 +97,19 @@
   - request parameters: None
   - response body content: 
     ```json
-    [
-      {
-        "username": "player1",
-        "bestScore": 25
-      },
-      {
-        "username": "player2",
-        "bestScore": 18
-      }
-    ]
+    {
+      "leaderboard": [
+        {
+          "username": "player1",
+          "bestScore": 25
+        },
+        {
+          "username": "player2",
+          "bestScore": 18
+        }
+      ],
+      "currentUserRank": 4
+    }
     ```
   - status codes: `200 OK`, `401 Unauthorized`, `500 Internal Server Error`
 
@@ -134,5 +139,9 @@
 - username, password (plus any other requested info)
 
 ## Use of AI Tools
-Briefly describe whether you used any AI tools (e.g., ChatGPT, GitHub Copilot, Claude) while working on this project, for which purposes (e.g., clarifying concepts, debugging, generating code), and how you verified or adapted their output.
-If you did not use any AI tools, simply state so.
+- Generate data
+- Verify syntax
+- Defining game's events
+- Debugging
+- Explaination of concepts
+- Redaction of this README document
