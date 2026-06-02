@@ -1,0 +1,722 @@
+[
+  {
+    "startStation": {
+      "id": 1,
+      "name": "Charpennes"
+    },
+    "endStation": {
+      "id": 5,
+      "name": "Perrache"
+    }
+  },
+  {
+    "startStation": {
+      "id": 1,
+      "name": "Charpennes"
+    },
+    "endStation": {
+      "id": 8,
+      "name": "Jean Macé"
+    }
+  },
+  {
+    "startStation": {
+      "id": 1,
+      "name": "Charpennes"
+    },
+    "endStation": {
+      "id": 10,
+      "name": "Cuire"
+    }
+  },
+  {
+    "startStation": {
+      "id": 1,
+      "name": "Charpennes"
+    },
+    "endStation": {
+      "id": 11,
+      "name": "Vieux Lyon"
+    }
+  },
+  {
+    "startStation": {
+      "id": 1,
+      "name": "Charpennes"
+    },
+    "endStation": {
+      "id": 12,
+      "name": "Gorge de Loup"
+    }
+  },
+  {
+    "startStation": {
+      "id": 2,
+      "name": "République"
+    },
+    "endStation": {
+      "id": 4,
+      "name": "Bellecour"
+    }
+  },
+  {
+    "startStation": {
+      "id": 2,
+      "name": "République"
+    },
+    "endStation": {
+      "id": 5,
+      "name": "Perrache"
+    }
+  },
+  {
+    "startStation": {
+      "id": 2,
+      "name": "République"
+    },
+    "endStation": {
+      "id": 7,
+      "name": "Saxe-Gambetta"
+    }
+  },
+  {
+    "startStation": {
+      "id": 2,
+      "name": "République"
+    },
+    "endStation": {
+      "id": 8,
+      "name": "Jean Macé"
+    }
+  },
+  {
+    "startStation": {
+      "id": 2,
+      "name": "République"
+    },
+    "endStation": {
+      "id": 9,
+      "name": "Croix-Rousse"
+    }
+  },
+  {
+    "startStation": {
+      "id": 2,
+      "name": "République"
+    },
+    "endStation": {
+      "id": 10,
+      "name": "Cuire"
+    }
+  },
+  {
+    "startStation": {
+      "id": 2,
+      "name": "République"
+    },
+    "endStation": {
+      "id": 11,
+      "name": "Vieux Lyon"
+    }
+  },
+  {
+    "startStation": {
+      "id": 2,
+      "name": "République"
+    },
+    "endStation": {
+      "id": 12,
+      "name": "Gorge de Loup"
+    }
+  },
+  {
+    "startStation": {
+      "id": 3,
+      "name": "Hôtel de Ville"
+    },
+    "endStation": {
+      "id": 8,
+      "name": "Jean Macé"
+    }
+  },
+  {
+    "startStation": {
+      "id": 3,
+      "name": "Hôtel de Ville"
+    },
+    "endStation": {
+      "id": 12,
+      "name": "Gorge de Loup"
+    }
+  },
+  {
+    "startStation": {
+      "id": 4,
+      "name": "Bellecour"
+    },
+    "endStation": {
+      "id": 2,
+      "name": "République"
+    }
+  },
+  {
+    "startStation": {
+      "id": 4,
+      "name": "Bellecour"
+    },
+    "endStation": {
+      "id": 10,
+      "name": "Cuire"
+    }
+  },
+  {
+    "startStation": {
+      "id": 5,
+      "name": "Perrache"
+    },
+    "endStation": {
+      "id": 1,
+      "name": "Charpennes"
+    }
+  },
+  {
+    "startStation": {
+      "id": 5,
+      "name": "Perrache"
+    },
+    "endStation": {
+      "id": 2,
+      "name": "République"
+    }
+  },
+  {
+    "startStation": {
+      "id": 5,
+      "name": "Perrache"
+    },
+    "endStation": {
+      "id": 6,
+      "name": "Part-Dieu"
+    }
+  },
+  {
+    "startStation": {
+      "id": 5,
+      "name": "Perrache"
+    },
+    "endStation": {
+      "id": 8,
+      "name": "Jean Macé"
+    }
+  },
+  {
+    "startStation": {
+      "id": 5,
+      "name": "Perrache"
+    },
+    "endStation": {
+      "id": 9,
+      "name": "Croix-Rousse"
+    }
+  },
+  {
+    "startStation": {
+      "id": 5,
+      "name": "Perrache"
+    },
+    "endStation": {
+      "id": 10,
+      "name": "Cuire"
+    }
+  },
+  {
+    "startStation": {
+      "id": 5,
+      "name": "Perrache"
+    },
+    "endStation": {
+      "id": 12,
+      "name": "Gorge de Loup"
+    }
+  },
+  {
+    "startStation": {
+      "id": 6,
+      "name": "Part-Dieu"
+    },
+    "endStation": {
+      "id": 5,
+      "name": "Perrache"
+    }
+  },
+  {
+    "startStation": {
+      "id": 6,
+      "name": "Part-Dieu"
+    },
+    "endStation": {
+      "id": 9,
+      "name": "Croix-Rousse"
+    }
+  },
+  {
+    "startStation": {
+      "id": 6,
+      "name": "Part-Dieu"
+    },
+    "endStation": {
+      "id": 10,
+      "name": "Cuire"
+    }
+  },
+  {
+    "startStation": {
+      "id": 6,
+      "name": "Part-Dieu"
+    },
+    "endStation": {
+      "id": 11,
+      "name": "Vieux Lyon"
+    }
+  },
+  {
+    "startStation": {
+      "id": 6,
+      "name": "Part-Dieu"
+    },
+    "endStation": {
+      "id": 12,
+      "name": "Gorge de Loup"
+    }
+  },
+  {
+    "startStation": {
+      "id": 7,
+      "name": "Saxe-Gambetta"
+    },
+    "endStation": {
+      "id": 2,
+      "name": "République"
+    }
+  },
+  {
+    "startStation": {
+      "id": 7,
+      "name": "Saxe-Gambetta"
+    },
+    "endStation": {
+      "id": 9,
+      "name": "Croix-Rousse"
+    }
+  },
+  {
+    "startStation": {
+      "id": 7,
+      "name": "Saxe-Gambetta"
+    },
+    "endStation": {
+      "id": 10,
+      "name": "Cuire"
+    }
+  },
+  {
+    "startStation": {
+      "id": 7,
+      "name": "Saxe-Gambetta"
+    },
+    "endStation": {
+      "id": 12,
+      "name": "Gorge de Loup"
+    }
+  },
+  {
+    "startStation": {
+      "id": 8,
+      "name": "Jean Macé"
+    },
+    "endStation": {
+      "id": 1,
+      "name": "Charpennes"
+    }
+  },
+  {
+    "startStation": {
+      "id": 8,
+      "name": "Jean Macé"
+    },
+    "endStation": {
+      "id": 2,
+      "name": "République"
+    }
+  },
+  {
+    "startStation": {
+      "id": 8,
+      "name": "Jean Macé"
+    },
+    "endStation": {
+      "id": 3,
+      "name": "Hôtel de Ville"
+    }
+  },
+  {
+    "startStation": {
+      "id": 8,
+      "name": "Jean Macé"
+    },
+    "endStation": {
+      "id": 5,
+      "name": "Perrache"
+    }
+  },
+  {
+    "startStation": {
+      "id": 8,
+      "name": "Jean Macé"
+    },
+    "endStation": {
+      "id": 9,
+      "name": "Croix-Rousse"
+    }
+  },
+  {
+    "startStation": {
+      "id": 8,
+      "name": "Jean Macé"
+    },
+    "endStation": {
+      "id": 10,
+      "name": "Cuire"
+    }
+  },
+  {
+    "startStation": {
+      "id": 8,
+      "name": "Jean Macé"
+    },
+    "endStation": {
+      "id": 11,
+      "name": "Vieux Lyon"
+    }
+  },
+  {
+    "startStation": {
+      "id": 8,
+      "name": "Jean Macé"
+    },
+    "endStation": {
+      "id": 12,
+      "name": "Gorge de Loup"
+    }
+  },
+  {
+    "startStation": {
+      "id": 9,
+      "name": "Croix-Rousse"
+    },
+    "endStation": {
+      "id": 2,
+      "name": "République"
+    }
+  },
+  {
+    "startStation": {
+      "id": 9,
+      "name": "Croix-Rousse"
+    },
+    "endStation": {
+      "id": 5,
+      "name": "Perrache"
+    }
+  },
+  {
+    "startStation": {
+      "id": 9,
+      "name": "Croix-Rousse"
+    },
+    "endStation": {
+      "id": 6,
+      "name": "Part-Dieu"
+    }
+  },
+  {
+    "startStation": {
+      "id": 9,
+      "name": "Croix-Rousse"
+    },
+    "endStation": {
+      "id": 7,
+      "name": "Saxe-Gambetta"
+    }
+  },
+  {
+    "startStation": {
+      "id": 9,
+      "name": "Croix-Rousse"
+    },
+    "endStation": {
+      "id": 8,
+      "name": "Jean Macé"
+    }
+  },
+  {
+    "startStation": {
+      "id": 9,
+      "name": "Croix-Rousse"
+    },
+    "endStation": {
+      "id": 11,
+      "name": "Vieux Lyon"
+    }
+  },
+  {
+    "startStation": {
+      "id": 9,
+      "name": "Croix-Rousse"
+    },
+    "endStation": {
+      "id": 12,
+      "name": "Gorge de Loup"
+    }
+  },
+  {
+    "startStation": {
+      "id": 10,
+      "name": "Cuire"
+    },
+    "endStation": {
+      "id": 1,
+      "name": "Charpennes"
+    }
+  },
+  {
+    "startStation": {
+      "id": 10,
+      "name": "Cuire"
+    },
+    "endStation": {
+      "id": 2,
+      "name": "République"
+    }
+  },
+  {
+    "startStation": {
+      "id": 10,
+      "name": "Cuire"
+    },
+    "endStation": {
+      "id": 4,
+      "name": "Bellecour"
+    }
+  },
+  {
+    "startStation": {
+      "id": 10,
+      "name": "Cuire"
+    },
+    "endStation": {
+      "id": 5,
+      "name": "Perrache"
+    }
+  },
+  {
+    "startStation": {
+      "id": 10,
+      "name": "Cuire"
+    },
+    "endStation": {
+      "id": 6,
+      "name": "Part-Dieu"
+    }
+  },
+  {
+    "startStation": {
+      "id": 10,
+      "name": "Cuire"
+    },
+    "endStation": {
+      "id": 7,
+      "name": "Saxe-Gambetta"
+    }
+  },
+  {
+    "startStation": {
+      "id": 10,
+      "name": "Cuire"
+    },
+    "endStation": {
+      "id": 8,
+      "name": "Jean Macé"
+    }
+  },
+  {
+    "startStation": {
+      "id": 10,
+      "name": "Cuire"
+    },
+    "endStation": {
+      "id": 11,
+      "name": "Vieux Lyon"
+    }
+  },
+  {
+    "startStation": {
+      "id": 10,
+      "name": "Cuire"
+    },
+    "endStation": {
+      "id": 12,
+      "name": "Gorge de Loup"
+    }
+  },
+  {
+    "startStation": {
+      "id": 11,
+      "name": "Vieux Lyon"
+    },
+    "endStation": {
+      "id": 1,
+      "name": "Charpennes"
+    }
+  },
+  {
+    "startStation": {
+      "id": 11,
+      "name": "Vieux Lyon"
+    },
+    "endStation": {
+      "id": 2,
+      "name": "République"
+    }
+  },
+  {
+    "startStation": {
+      "id": 11,
+      "name": "Vieux Lyon"
+    },
+    "endStation": {
+      "id": 6,
+      "name": "Part-Dieu"
+    }
+  },
+  {
+    "startStation": {
+      "id": 11,
+      "name": "Vieux Lyon"
+    },
+    "endStation": {
+      "id": 8,
+      "name": "Jean Macé"
+    }
+  },
+  {
+    "startStation": {
+      "id": 11,
+      "name": "Vieux Lyon"
+    },
+    "endStation": {
+      "id": 9,
+      "name": "Croix-Rousse"
+    }
+  },
+  {
+    "startStation": {
+      "id": 11,
+      "name": "Vieux Lyon"
+    },
+    "endStation": {
+      "id": 10,
+      "name": "Cuire"
+    }
+  },
+  {
+    "startStation": {
+      "id": 12,
+      "name": "Gorge de Loup"
+    },
+    "endStation": {
+      "id": 1,
+      "name": "Charpennes"
+    }
+  },
+  {
+    "startStation": {
+      "id": 12,
+      "name": "Gorge de Loup"
+    },
+    "endStation": {
+      "id": 2,
+      "name": "République"
+    }
+  },
+  {
+    "startStation": {
+      "id": 12,
+      "name": "Gorge de Loup"
+    },
+    "endStation": {
+      "id": 3,
+      "name": "Hôtel de Ville"
+    }
+  },
+  {
+    "startStation": {
+      "id": 12,
+      "name": "Gorge de Loup"
+    },
+    "endStation": {
+      "id": 5,
+      "name": "Perrache"
+    }
+  },
+  {
+    "startStation": {
+      "id": 12,
+      "name": "Gorge de Loup"
+    },
+    "endStation": {
+      "id": 6,
+      "name": "Part-Dieu"
+    }
+  },
+  {
+    "startStation": {
+      "id": 12,
+      "name": "Gorge de Loup"
+    },
+    "endStation": {
+      "id": 7,
+      "name": "Saxe-Gambetta"
+    }
+  },
+  {
+    "startStation": {
+      "id": 12,
+      "name": "Gorge de Loup"
+    },
+    "endStation": {
+      "id": 8,
+      "name": "Jean Macé"
+    }
+  },
+  {
+    "startStation": {
+      "id": 12,
+      "name": "Gorge de Loup"
+    },
+    "endStation": {
+      "id": 9,
+      "name": "Croix-Rousse"
+    }
+  },
+  {
+    "startStation": {
+      "id": 12,
+      "name": "Gorge de Loup"
+    },
+    "endStation": {
+      "id": 10,
+      "name": "Cuire"
+    }
+  }
+]

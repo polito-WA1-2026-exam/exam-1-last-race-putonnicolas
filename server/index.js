@@ -2,6 +2,7 @@
 import 'dotenv/config';
 import express from "express";
 import { getMap } from "./DAO/mapDao.js";
+import fs from "fs";
 import { getLeaderboard, getUser, getUserById, getUserRank } from "./DAO/userDao.js";
 import { isLoggedIn } from './database/db.js'
 import passport from "passport";
@@ -27,7 +28,14 @@ app.use(passport.initialize())
 app.use(passport.authenticate("session"));
 
 // Stores the map in the server's cache since it will be the same for every player.
+
+
+console.log("[SERVER] Loading map & valids stations pairs...");
 const map = await getMap();
+
+const validPairsRaw = fs.readFileSync('./valid_pairs.json', 'utf-8');
+const validPairs = JSON.parse(validPairsRaw);
+console.log(`[SERVER] ${validPairs.length} stations pairs loaded in memory.`);
 
 // activate the server
 app.listen(port, () => {
@@ -64,7 +72,20 @@ app.delete('/api/sessions/current', (req, res) => {
 // GET /api/game/setup
 // Purpose: Retrieve the static network map and random start/end stations
 app.get('/api/game/setup', isLoggedIn, (req, res) => {
+  try {
+    const randomIndex = Math.floor(Math.random() * validPairs.length);
+    const selectedPair = validPairs[randomIndex];
 
+    res.json({
+      network: map,
+      startStation: selectedPair.startStation,
+      endStation: selectedPair.endStation
+    });
+
+  } catch (err) {
+    console.error("[ROUTE] Error game setup :", err);
+    res.status(500).json({ error: "Impossible to setup the game." });
+  }
 });
 
 // POST /api/game/submit
