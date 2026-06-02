@@ -1,7 +1,7 @@
 import sqlite from "sqlite3"
-import { User } from "./model.js" 
+import { User } from "../model.js" 
 import crypto from "crypto"
-import db from "./db.js";
+import db from "../database/db.js";
 
 export const getUser = (username, password) => {
   return new Promise((resolve, reject) => {

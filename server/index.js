@@ -1,7 +1,9 @@
 // imports
 import express from "express";
 import { getMap } from "./DAO/mapDao.js";
+import { getUser } from "./DAO/userDao.js";
 import passport from "passport";
+import session from 'express-session'
 
 // init express
 const app = new express();
@@ -27,3 +29,5 @@ const map = await getMap();
 app.listen(port, () => {
   console.log(`Server listening at http://localhost:${port}`);
 });
+
+// getUser("Marc", "iLovecats2").then((user) => console.log(user))

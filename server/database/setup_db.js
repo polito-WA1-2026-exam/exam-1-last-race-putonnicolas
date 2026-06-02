@@ -1,6 +1,6 @@
 import sqlite3 from "sqlite3";
 import crypto from "crypto";
-import db from "./db.js";
+import db from "../database/db.js";
 
 const sqlite = sqlite3.verbose();
 const DATABASE = "./database.sqlite";
@@ -68,7 +68,7 @@ db.serialize(() => {
   insertUser.run('Marc', marc.hashedPassword, marc.salt, 24); 
 
   const raphael = hashPassword('paris');
-  insertUser.run('Raphaël', raphael.hashedPassword, raphael.salt, 15); 
+  insertUser.run('Raphael', raphael.hashedPassword, raphael.salt, 15); 
 
   const nicolo = hashPassword('1l#jf3]');
   insertUser.run('Nicolo', nicolo.hashedPassword, nicolo.salt, 0); 

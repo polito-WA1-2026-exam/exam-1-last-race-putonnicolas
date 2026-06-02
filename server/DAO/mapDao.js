@@ -1,6 +1,6 @@
 import sqlite from "sqlite3";
 import crypto from "crypto";
-import db from "./db.js";
+import db from "../database/db.js";
 import { Station, Line, Segment } from "../model.js"
 
 // ----- Utils ------
