@@ -1,5 +1,6 @@
 import sqlite3 from "sqlite3";
 import crypto from "crypto";
+import db from "./db.js";
 
 const sqlite = sqlite3.verbose();
 const DATABASE = "./database.sqlite";
@@ -10,11 +11,6 @@ function hashPassword(password) {
   const hashedPassword = crypto.scryptSync(password, salt, 32).toString('hex');
   return { salt, hashedPassword };
 }
-
-const db = new sqlite.Database(DATABASE, (err) => {
-  if (err) throw err;
-  console.log("[DB] Connected to the database.");
-});
 
 db.serialize(() => {
   console.log("[DB] Dropping old tables...");

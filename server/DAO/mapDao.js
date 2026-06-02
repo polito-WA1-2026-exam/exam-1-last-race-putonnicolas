@@ -1,16 +1,7 @@
 import sqlite from "sqlite3";
 import crypto from "crypto";
-
-import { Station, Line, Segment } from "./model.js"
-
-const db = new sqlite.Database("database.sqlite", (err) => {
-  if (err) {
-    console.error("[DAO] Failed to connect to the database:", err);
-    throw err;
-  }
-  console.log("[DAO] Connected to the database.");
-});
-
+import db from "./db.js";
+import { Station, Line, Segment } from "../model.js"
 
 // ----- Utils ------
 const fetchAll = (query) => {
