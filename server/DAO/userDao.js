@@ -98,8 +98,8 @@ export const getUserRank = (userScore) => {
 
 export const updateBestScore = (userId, newScore) => {
   return new Promise((resolve, reject) => {
-    let sql = "UPDATE answer SET bestScore = ? WHERE id = ?"
-    db.run(sql, [newScore, user.id], function(err) {
+    let sql = "UPDATE users SET bestScore = ? WHERE id = ?"
+    db.run(sql, [newScore, userId], function(err) {
       if (err)
         reject(err);
       else

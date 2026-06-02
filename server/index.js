@@ -3,7 +3,7 @@ import 'dotenv/config';
 import express from "express";
 import { getMap } from "./DAO/mapDao.js";
 import fs from "fs";
-import { getLeaderboard, getUser, getUserById, getUserRank } from "./DAO/userDao.js";
+import { getLeaderboard, getUser, getUserById, getUserRank, updateBestScore } from "./DAO/userDao.js";
 import { isLoggedIn } from './database/db.js'
 import passport from "passport";
 import session from 'express-session'
@@ -78,15 +78,16 @@ app.get('/api/game/setup', isLoggedIn, (req, res) => {
     const randomIndex = Math.floor(Math.random() * validPairs.length);
     const selectedPair = validPairs[randomIndex];
 
-    req.session.currentGame = {
-      startStationId: 12,
-      endStationId: 9
-    };
-
+    // For testing purposes
     // req.session.currentGame = {
-    //   startStationId: selectedPair.startStation.id,
-    //   endStationId: selectedPair.endStation.id
+    //   startStationId: 12,
+    //   endStationId: 9
     // };
+
+    req.session.currentGame = {
+      startStationId: selectedPair.startStation.id,
+      endStationId: selectedPair.endStation.id
+    };
  
     res.json({
       network: map,
