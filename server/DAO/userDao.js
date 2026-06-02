@@ -1,3 +1,4 @@
+import 'dotenv/config';
 import sqlite from "sqlite3"
 import { User } from "../model.js" 
 import crypto from "crypto"
@@ -17,7 +18,8 @@ export const getUser = (username, password) => {
         resolve(false)
       } 
       else {
-        crypto.scrypt(password, row.salt, 32, (err, hashedPassword) => {
+        const pepperedPassword = password + process.env.PEPPER
+        crypto.scrypt(pepperedPassword, row.salt, 32, (err, hashedPassword) => {
           if (err) {
             reject(err)
           }

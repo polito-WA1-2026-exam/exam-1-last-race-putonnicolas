@@ -1,3 +1,4 @@
+import 'dotenv/config';
 import sqlite3 from "sqlite3";
 import crypto from "crypto";
 import db from "../database/db.js";
@@ -64,13 +65,13 @@ db.serialize(() => {
 
   const insertUser = db.prepare(`INSERT INTO users (username, hash, salt, bestScore) VALUES (?, ?, ?, ?)`);
 
-  const marc = hashPassword('iLovecats2');
+  const marc = hashPassword('iLovecats2' + process.env.PEPPER);
   insertUser.run('Marc', marc.hashedPassword, marc.salt, 24); 
 
-  const raphael = hashPassword('paris');
+  const raphael = hashPassword('paris' + process.env.PEPPER);
   insertUser.run('Raphael', raphael.hashedPassword, raphael.salt, 15); 
 
-  const nicolo = hashPassword('1l#jf3]');
+  const nicolo = hashPassword('1l#jf3]' + process.env.PEPPER);
   insertUser.run('Nicolo', nicolo.hashedPassword, nicolo.salt, 0); 
 
   insertUser.finalize((err) => {
