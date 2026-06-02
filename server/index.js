@@ -152,7 +152,7 @@ app.post('/api/game/submit', isLoggedIn, async (req, res) => {
 
     if (finalScore > req.user.bestScore)
     {
-      // await updateBestScore(req.user.id, finalScore)
+      await updateBestScore(req.user.id, finalScore)
       req.user.bestScore = finalScore
     }
     

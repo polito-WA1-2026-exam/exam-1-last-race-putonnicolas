@@ -6,7 +6,7 @@ import { Station, Line, Segment } from "../model.js"
 // ----- Utils ------
 const fetchAll = (query) => {
   return new Promise((resolve, reject) => {
-    db.all(query, [], (err, rows) => {
+    db.all(query, [], function(err, rows) {
       if (err) 
       {
         console.error(`[DAO] Error executing query: ${query}`);

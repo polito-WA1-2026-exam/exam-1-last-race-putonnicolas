@@ -8,7 +8,7 @@ export const getUser = (username, password) => {
   return new Promise((resolve, reject) => {
     const sql = "SELECT * FROM users WHERE username = ?"
 
-    db.get(sql, [username], (err, row) => {
+    db.get(sql, [username], function(err, row) {
       if (err) {
         console.error(`[DAO] Error fetching user ${username}:`, err)
         reject(err)
@@ -45,7 +45,7 @@ export const getUserById = (id) => {
   return new Promise((resolve, reject) => {
     const sql = "SELECT * FROM users WHERE id = ?"
 
-    db.get(sql, [id], (err, row) => {
+    db.get(sql, [id], function(err, row) {
       if (err) {
         console.error(`[DAO] Error fetching user with id ${id}:`, err)
         reject(err)
@@ -68,7 +68,7 @@ export const getLeaderboard = (nbTop = 10) => {
   return new Promise((resolve, reject) => {
     const sql = "SELECT username, bestScore FROM users ORDER BY bestScore DESC LIMIT ?"
 
-    db.all(sql, [nbTop], (err, rows) => {
+    db.all(sql, [nbTop], function(err, rows) {
       if (err) {
         console.error(`[DAO] Error fetching leaderboard`, err)
         reject(err)
@@ -84,7 +84,7 @@ export const getUserRank = (userScore) => {
   return new Promise((resolve, reject) => {
     const sql = "SELECT COUNT(*) + 1 AS userRank FROM users WHERE bestScore > ?"
 
-    db.get(sql, [userScore], (err, row) => {
+    db.get(sql, [userScore], function(err, row) {
       if (err) {
         console.error(`[DAO] Error fetching user rank`, err)
         reject(err)
@@ -94,4 +94,16 @@ export const getUserRank = (userScore) => {
       }
     })
   })
+}
+
+export const updateBestScore = (userId, newScore) => {
+  return new Promise((resolve, reject) => {
+    let sql = "UPDATE answer SET bestScore = ? WHERE id = ?"
+    db.run(sql, [newScore, user.id], function(err) {
+      if (err)
+        reject(err);
+      else
+        resolve(userId);
+    });
+  });
 }
