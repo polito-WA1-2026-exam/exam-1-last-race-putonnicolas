@@ -1,8 +1,8 @@
-import 'dotenv/config';
+import 'dotenv/config'
 import sqlite from "sqlite3"
 import { User } from "../model.js" 
 import crypto from "crypto"
-import db from "../database/db.js";
+import db from "../database/db.js"
 
 export const getUser = (username, password) => {
   return new Promise((resolve, reject) => {
@@ -62,3 +62,36 @@ export const getUserById = (id) => {
       })
   })
 } 
+
+
+export const getLeaderboard = (nbTop = 10) => {
+  return new Promise((resolve, reject) => {
+    const sql = "SELECT username, bestScore FROM users ORDER BY bestScore DESC LIMIT ?"
+
+    db.all(sql, [nbTop], (err, rows) => {
+      if (err) {
+        console.error(`[DAO] Error fetching leaderboard`, err)
+        reject(err)
+      }
+      else {
+        resolve(rows)
+      }
+    })
+  })
+}
+
+export const getUserRank = (userScore) => {
+  return new Promise((resolve, reject) => {
+    const sql = "SELECT COUNT(*) + 1 AS userRank FROM users WHERE bestScore > ?"
+
+    db.get(sql, [userScore], (err, row) => {
+      if (err) {
+        console.error(`[DAO] Error fetching user rank`, err)
+        reject(err)
+      } 
+      else {
+        resolve(row.userRank)
+      }
+    })
+  })
+}
