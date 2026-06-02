@@ -2,7 +2,8 @@
 import 'dotenv/config';
 import express from "express";
 import { getMap } from "./DAO/mapDao.js";
-import { getUser, getUserById } from "./DAO/userDao.js";
+import { getLeaderboard, getUser, getUserById, getUserRank } from "./DAO/userDao.js";
+import { isLoggedIn } from './database/db.js'
 import passport from "passport";
 import session from 'express-session'
 import './strategies/localStrategy.js'
@@ -45,13 +46,8 @@ app.post('/api/sessions', passport.authenticate("local"), (req, res) => {
 
 // GET /api/sessions/current
 // Purpose: Check if the user is currently logged in
-app.get('/api/sessions/current', (req, res) => {
-  if(req.isAuthenticated()) {
+app.get('/api/sessions/current', isLoggedIn, (req, res) => {
     res.json(req.user)
-  }
-  else {
-    res.status(401).json({error: "Not authentificated"})
-  }
 });
 
 // DELETE /api/sessions/current
@@ -67,13 +63,13 @@ app.delete('/api/sessions/current', (req, res) => {
 
 // GET /api/game/setup
 // Purpose: Retrieve the static network map and random start/end stations
-app.get('/api/game/setup', (req, res) => {
+app.get('/api/game/setup', isLoggedIn, (req, res) => {
 
 });
 
 // POST /api/game/submit
 // Purpose: Validate the route, apply events, calculate and save score
-app.post('/api/game/submit', (req, res) => {
+app.post('/api/game/submit', isLoggedIn, (req, res) => {
 
 });
 
@@ -82,6 +78,21 @@ app.post('/api/game/submit', (req, res) => {
 
 // GET /api/leaderboard
 // Purpose: Retrieve the general ranking
-app.get('/api/leaderboard', (req, res) => {
+app.get('/api/leaderboard', isLoggedIn, async (req, res) => {
+  try{
+    const nbTop = parseInt(req.query.nbTop, 10) || 10;
+    const leaderboard = await getLeaderboard(nbTop)
+    const rank = await getUserRank(req.user.bestScore)
 
+    res.json({
+      leaderboard: leaderboard,
+      currentUserRank: rank,
+    })
+  }
+  catch (err) {
+    console.error("[ROUTE] Leaderboard error :", err);
+    res.status(500).json({
+      error: "Unable to retrieve the leaderboard."
+    });
+  }
 });

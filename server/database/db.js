@@ -8,6 +8,14 @@ const db = new sqlite.Database("./database.sqlite", (err) => {
   console.log("[DB] Database connection established.");
 });
 
+export const isLoggedIn = (req, res, next) => {
+  if(req.isAuthenticated()) {
+    return next();
+  }
+  return res.status(401).json({error: "Not authorized"});
+}
+
+
 process.on('SIGINT', () => {
   db.close(() => {
     console.log('[DB] Connection closed.');
