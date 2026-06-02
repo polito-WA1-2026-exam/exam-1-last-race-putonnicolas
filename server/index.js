@@ -8,6 +8,8 @@ import { isLoggedIn } from './database/db.js'
 import passport from "passport";
 import session from 'express-session'
 import './strategies/localStrategy.js'
+import { getAllEvents } from './DAO/eventDao.js';
+import { isRouteValid } from './graphs/utils.js';
 
 // init express
 const app = express();
@@ -76,11 +78,21 @@ app.get('/api/game/setup', isLoggedIn, (req, res) => {
     const randomIndex = Math.floor(Math.random() * validPairs.length);
     const selectedPair = validPairs[randomIndex];
 
+    req.session.currentGame = {
+      startStationId: 12,
+      endStationId: 9
+    };
+
+    // req.session.currentGame = {
+    //   startStationId: selectedPair.startStation.id,
+    //   endStationId: selectedPair.endStation.id
+    // };
+ 
     res.json({
       network: map,
       startStation: selectedPair.startStation,
       endStation: selectedPair.endStation
-    });
+    })
 
   } catch (err) {
     console.error("[ROUTE] Error game setup :", err);
@@ -89,9 +101,75 @@ app.get('/api/game/setup', isLoggedIn, (req, res) => {
 });
 
 // POST /api/game/submit
-// Purpose: Validate the route, apply events, calculate and save score
-app.post('/api/game/submit', isLoggedIn, (req, res) => {
+// Purpose: Validate the route, apply events, calculate and salve score
+app.post('/api/game/submit', isLoggedIn, async (req, res) => {
+  try{
+    const { route } = req.body
+    const gameContext = req.session.currentGame
+  
+    if (!gameContext) {
+      return res.status(400).json({ error: "Player currently not in a game." })
+    }
+  
+    let coins = 20
+    const journey = []
+  
+    const valid = isRouteValid(
+      map, 
+      route, 
+      gameContext.startStationId, 
+      gameContext.endStationId
+    )
+  
+    if(!valid) {
+      coins = 0
+    }
+    else {
+      const events = await getAllEvents()
+  
+      for (let i = 0; i < route.length - 1; i++)
+      {
+        const fromStation = route[i] 
+        const toStation = route[i+1]
+  
 
+        const randomEvent = events[Math.floor(Math.random() * events.length)]  
+        
+        coins += randomEvent.effect
+        
+        journey.push({
+          step: i + 1,
+          fromStationId: fromStation,
+          toStationId: toStation,
+          eventDescription: randomEvent.description,
+          effect: randomEvent.effect,
+          currentCoins: coins
+        });
+      }
+    }
+
+    const finalScore = Math.max(0, coins)
+
+    if (finalScore > req.user.bestScore)
+    {
+      // await updateBestScore(req.user.id, finalScore)
+      req.user.bestScore = finalScore
+    }
+    
+    req.session.currentGame = null
+    
+    res.status(200).json({
+      isValid: valid,
+      finalScore: finalScore,
+      journeySteps: journey, 
+      isNewRecord: finalScore > req.user.bestScore
+    })
+  }
+  catch (err)
+  {
+    console.error("[ROUTE] Error while validating path : ", err)
+    res.status(500).json({error: `Error while validating the path : ${err}`})
+  }
 });
 
 // ------------------------------

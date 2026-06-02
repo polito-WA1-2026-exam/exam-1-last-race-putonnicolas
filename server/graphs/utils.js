@@ -73,3 +73,56 @@ export const generateAndSave = async () => {
     process.exit(1)
   }
 }
+
+export const isRouteValid = (map, route, startId, endId) => 
+{
+  if(!route || route.length < 1) {
+    console.log(`[VALIDATION] Route empty or too small`);
+    return false
+  }
+  if(!(route[0] == startId && route[route.length - 1] == endId)){
+    console.log(`[VALIDATION] Route's start or end point is wrong`);
+    return false
+  }
+
+  let currentLine = null
+  for (let i = 0; i < route.length - 1; i++)
+  {
+    const fromStationId = route[i]
+    const toStationId = route[i+1]
+
+    const segment = map.segments.find(seg => 
+      (seg.station1Id === fromStationId && seg.station2Id === toStationId) ||
+      (seg.station2Id === fromStationId && seg.station1Id === toStationId)
+    )
+    
+    if (!segment)  {
+      console.log(`[VALIDATION] Such segment does not exist : ${fromStationId} - ${toStationId}`);
+      return false
+    }
+    if (currentLine !== null && currentLine != segment.lineId)
+    {
+      const station = map.stations.find(s => s.id === fromStationId)
+
+      if (!station || !isInterchangeStation(map, station))
+      {
+        console.log(`[VALIDATION] Illegal line change at ${station.name}`);
+        return false;
+      }
+    }
+    
+    currentLine = segment.lineId
+  }
+
+  return true
+}
+
+const isInterchangeStation = ( map, station ) => {
+    const connectedSegments = map.segments.filter(seg => 
+    seg.station1Id === station.id || seg.station2Id === station.id
+  )
+
+  const uniqueLines = new Set(connectedSegments.map(seg => seg.lineId))
+
+  return uniqueLines.size >= 2
+}
