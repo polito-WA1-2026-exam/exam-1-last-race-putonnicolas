@@ -1,5 +1,7 @@
+import 'dotenv/config';
 import sqlite3 from "sqlite3";
 import crypto from "crypto";
+import db from "../database/db.js";
 
 const sqlite = sqlite3.verbose();
 const DATABASE = "./database.sqlite";
@@ -10,11 +12,6 @@ function hashPassword(password) {
   const hashedPassword = crypto.scryptSync(password, salt, 32).toString('hex');
   return { salt, hashedPassword };
 }
-
-const db = new sqlite.Database(DATABASE, (err) => {
-  if (err) throw err;
-  console.log("[DB] Connected to the database.");
-});
 
 db.serialize(() => {
   console.log("[DB] Dropping old tables...");
@@ -68,13 +65,13 @@ db.serialize(() => {
 
   const insertUser = db.prepare(`INSERT INTO users (username, hash, salt, bestScore) VALUES (?, ?, ?, ?)`);
 
-  const marc = hashPassword('iLovecats2');
+  const marc = hashPassword('iLovecats2' + process.env.PEPPER);
   insertUser.run('Marc', marc.hashedPassword, marc.salt, 24); 
 
-  const raphael = hashPassword('paris');
-  insertUser.run('Raphaël', raphael.hashedPassword, raphael.salt, 15); 
+  const raphael = hashPassword('paris' + process.env.PEPPER);
+  insertUser.run('Raphael', raphael.hashedPassword, raphael.salt, 15); 
 
-  const nicolo = hashPassword('1l#jf3]');
+  const nicolo = hashPassword('1l#jf3]' + process.env.PEPPER);
   insertUser.run('Nicolo', nicolo.hashedPassword, nicolo.salt, 0); 
 
   insertUser.finalize((err) => {
