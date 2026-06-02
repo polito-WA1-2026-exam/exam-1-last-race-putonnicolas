@@ -38,3 +38,25 @@ export const getUser = (username, password) => {
     })
   })
 } 
+
+export const getUserById = (id) => {
+  return new Promise((resolve, reject) => {
+    const sql = "SELECT * FROM users WHERE id = ?"
+
+    db.get(sql, [id], (err, row) => {
+      if (err) {
+        console.error(`[DAO] Error fetching user with id ${id}:`, err)
+        reject(err)
+      } 
+      else if (row === undefined) {
+        console.log(`[AUTH] User with id '${id}' not found.`)
+        resolve(false)
+      } 
+      else {
+            console.log(`[AUTH] User '${id}' successfully retrieved.`)
+            const user = new User(row.id, row.username, row.hash, row.salt, row.bestScore)
+            resolve(user)
+        }
+      })
+  })
+} 

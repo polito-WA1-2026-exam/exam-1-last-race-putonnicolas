@@ -30,4 +30,4 @@ app.listen(port, () => {
   console.log(`Server listening at http://localhost:${port}`);
 });
 
-// getUser("Marc", "iLovecats2").then((user) => console.log(user))
+getUser("Marc", "iLovecats2").then((user) => console.log(user))
