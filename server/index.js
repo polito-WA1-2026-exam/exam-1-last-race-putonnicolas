@@ -65,7 +65,10 @@ app.post('/api/sessions', passport.authenticate("local"), (req, res) => {
 // GET /api/sessions/current
 // Purpose: Check if the user is currently logged in
 app.get('/api/sessions/current', isLoggedIn, (req, res) => {
-    res.json({"id": req.user.id, "username": req.user.username, "bestScore": req.user.bestScore})
+  if (req.isAuthenticated()) {
+    return res.status(200).json(req.user);
+  }
+  return res.status(200).json(null);
 });
 
 // DELETE /api/sessions/current
