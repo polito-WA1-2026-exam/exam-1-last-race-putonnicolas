@@ -1,0 +1,18 @@
+.btn-primary {
+  background-color: var(--color-primary);
+  color: var(--color-text-main);
+  border: none;
+  border-radius: 8px;
+  padding: 10px 20px;
+  transition: background-color 0.2s;
+}
+
+.btn-primary:hover {
+  background-color: var(--color-primary-light);
+}
+
+.btn-outlined {
+  background-color: transparent;
+  border: 2px solid var(--color-text-muted);
+  color: var(--color-text-main);
+}
