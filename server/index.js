@@ -10,11 +10,19 @@ import session from 'express-session'
 import './strategies/localStrategy.js'
 import { getAllEvents } from './DAO/eventDao.js';
 import { isRouteValid } from './graphs/utils.js';
+import cors from 'cors'
 
 // init express
 const app = express();
 const port = 3001;
+const corsOptions = {
+  origin: 'http://localhost:5173',
+  credentials: true,
+  optionsSuccessStatus: 200
+};
 
+// Middlewares
+app.use(cors(corsOptions));
 app.use(express.json());
 app.use(session({
   secret: process.env.SESSION_SECRET,
