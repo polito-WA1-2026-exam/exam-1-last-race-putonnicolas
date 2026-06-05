@@ -46,7 +46,9 @@ db.serialize(() => {
 
   db.run(`CREATE TABLE stations (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
-    name TEXT NOT NULL
+    name TEXT NOT NULL,
+    x INTEGER NOT NULL,
+    y INTEGER NOT NULL
   )`, (err) => { if(!err) console.log("[DB] Table stations created."); });
 
   db.run(`CREATE TABLE segments (
@@ -98,23 +100,23 @@ db.serialize(() => {
   });
 
   // Stations
-  const insertStation = db.prepare(`INSERT INTO stations (name) VALUES (?)`);
+  const insertStation = db.prepare(`INSERT INTO stations (name, x, y) VALUES (?, ?, ?)`);
   const stations = [
-    'Charpennes',         // 1
-    'République',         // 2
-    'Hôtel de Ville',     // 3
-    'Bellecour',          // 4
-    'Perrache',           // 5
-    'Part-Dieu',          // 6
-    'Saxe-Gambetta',      // 7
-    'Jean Macé',          // 8
-    'Croix-Rousse',       // 9
-    'Cuire',              // 10
-    'Vieux Lyon',         // 11
-    'Gorge de Loup'       // 12
-  ];
+      { name: 'Charpennes', x: 600, y: 150 },
+      { name: 'République', x: 520, y: 180 },
+      { name: 'Hôtel de Ville', x: 420, y: 220 },
+      { name: 'Bellecour', x: 400, y: 350 },
+      { name: 'Perrache', x: 380, y: 480 },
+      { name: 'Part-Dieu', x: 650, y: 300 },
+      { name: 'Saxe-Gambetta', x: 550, y: 400 },
+      { name: 'Jean Macé', x: 550, y: 500 },
+      { name: 'Croix-Rousse', x: 400, y: 120 },
+      { name: 'Cuire', x: 380, y: 50 },
+      { name: 'Vieux Lyon', x: 300, y: 350 },
+      { name: 'Gorge de Loup', x: 150, y: 250 }
+    ]
 
-  stations.forEach(s => insertStation.run(s));
+  stations.forEach(s => insertStation.run(s.name, s.x, s.y))
   insertStation.finalize((err) => {
     if (!err)
       console.log("[DB] Stations inserted.")
