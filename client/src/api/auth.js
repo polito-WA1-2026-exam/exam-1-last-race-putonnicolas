@@ -37,9 +37,10 @@ async function checkSession() {
         credentials: "include"
     })
     if (response.ok) {
-        return await response.json()
+        const user = await response.json(); 
+        return user; // null or the user
     } else {
-        return null
+        return null; 
     }
 }
 
