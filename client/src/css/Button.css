@@ -11,3 +11,37 @@
   box-shadow: none !important; 
   transition: all 0.1s ease-in-out;
 }
+
+.btn-arcade-secondary {
+  background-color: #312753 !important;
+  color: #D3C4FF !important;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 800;
+  font-size: 0.95rem;
+  border: none !important;
+  border-radius: 20px;
+  padding: 12px 24px;
+  border-bottom: 4px solid #1A1433 !important;
+  box-shadow: none !important;
+  transition: all 0.1s ease-in-out;
+}
+
+.btn-arcade-secondary:hover {
+  background-color: #3A2F61 !important;
+}
+
+.btn-arcade-secondary:active {
+  transform: translateY(4px);
+  border-bottom: 0px solid transparent !important;
+}
+
+.btn-arcade-sm {
+  font-size: 0.85rem;
+  padding: 6px 16px;
+  border-radius: 14px;
+  border-bottom: 3px solid #1A1433 !important;
+}
+
+.btn-arcade-sm:active {
+  transform: translateY(3px);
+}

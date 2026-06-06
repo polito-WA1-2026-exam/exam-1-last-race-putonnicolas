@@ -1,0 +1,91 @@
+.home-view-container {
+  padding-bottom: 4rem;
+}
+
+.season-badge {
+  display: inline-block;
+  background-color: #FFD600;
+  color: #1A1433;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 800;
+  font-size: 0.8rem;
+  padding: 6px 16px;
+  border-radius: 50px;
+}
+
+.hero-title {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 900;
+  font-size: 3.5rem;
+  line-height: 1.1;
+  color: #FFFFFF;
+}
+
+.hero-description {
+  font-family: 'Be Vietnam Pro', sans-serif;
+  font-size: 1.1rem;
+  color: #A09DB0;
+  line-height: 1.6;
+  max-width: 90%;
+}
+
+.btn-join-race {
+  background-color: #00D1FF !important;
+  color: #1A1433 !important;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 800;
+  font-size: 0.95rem;
+  border: none !important;
+  border-radius: 50px;
+  padding: 12px 28px;
+  box-shadow: 0 0 15px rgba(0, 209, 255, 0.3) !important;
+  transition: transform 0.2s ease;
+}
+
+.btn-join-race:hover {
+  transform: scale(1.05);
+  background-color: #33DBFF !important;
+}
+
+.starting-coins-badge {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50px;
+  padding: 8px 20px;
+  color: #FFFFFF;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+.coin-icon-small {
+  color: #FFD600;
+  font-weight: 900;
+  border: 2px solid #FFD600;
+  border-radius: 50%;
+  width: 22px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+}
+
+.hero-image {
+  border-radius: 24px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+  object-fit: cover;
+  width: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+@media (max-width: 992px) {
+  .hero-title {
+    font-size: 2.5rem;
+  }
+  .hero-description {
+    max-width: 100%;
+  }
+}

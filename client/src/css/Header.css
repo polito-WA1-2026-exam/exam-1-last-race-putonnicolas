@@ -20,3 +20,10 @@
   border-bottom: 0px solid transparent;
   margin-bottom: 4px;
 }
+
+.user-greeting {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  color: #D3C4FF;
+  font-weight: 900;
+  margin: 0;
+}
