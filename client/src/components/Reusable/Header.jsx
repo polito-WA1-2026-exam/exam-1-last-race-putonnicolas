@@ -3,6 +3,7 @@ import { Button, Container, Navbar } from "react-bootstrap"
 import { Link, useNavigate } from 'react-router'
 import UserContext from "../../contexts/UserProvider.jsx"
 import "../../css/Header.css"
+import "../../css/Button.css"
 import logoImage from '../../assets/last_race_logo.png';
 
 export function Header() {

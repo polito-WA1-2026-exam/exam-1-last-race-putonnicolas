@@ -1,5 +1,13 @@
-.navbar-logo {
-  height: 4rem; 
-  width: auto; 
-  object-fit: contain; 
+.app-viewport {
+  background-color: #1A1433;
+  min-height: 100vh;
+  color: white;
+  display: flex;
+  flex-direction: column;
+}
+
+main.container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
 }

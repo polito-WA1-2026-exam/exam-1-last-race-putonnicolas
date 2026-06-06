@@ -10,20 +10,6 @@
   object-fit: contain;
 }
 
-.btn-arcade-login {
-  background-color: var(--color-primary, #6C38FF);
-  color: white;
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-weight: 800;
-  letter-spacing: 0.5px;
-  border: none;
-  border-radius: 20px;
-  padding: 8px 24px;
-  border-bottom: 4px solid #4B27B2;
-  box-shadow: none !important; 
-  transition: all 0.1s ease-in-out;
-}
-
 .btn-arcade-login:hover {
   background-color: #8356ff;
   color: white;
