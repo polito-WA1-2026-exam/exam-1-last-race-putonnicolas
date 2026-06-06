@@ -20,7 +20,7 @@ function App() {
             <Route path="home" element={<HomeView />} />
             {/* <Route path="game" element={<Game />} /> */}
             {/* <Route path="leaderboard" element={<Leaderboard/>} /> */}
-            {/* <Route path="*" element={<ErrorPage/>} /> */}
+            <Route path="*" element={<ErrorPage/>} />
           </Route>
         </Routes>
     </UserProvider>
