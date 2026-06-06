@@ -68,6 +68,10 @@ app.get('/api/sessions/current', isLoggedIn, (req, res) => {
   if (req.isAuthenticated()) {
     return res.status(200).json(req.user);
   }
+  /* return a 200 status code anyway, since this endpoint
+   is basically used to check if the user is logged there's no point
+   throwing an error if not, either the response is valid. 
+  */
   return res.status(200).json(null);
 });
 
