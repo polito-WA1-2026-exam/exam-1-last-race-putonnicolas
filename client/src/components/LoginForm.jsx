@@ -1,6 +1,6 @@
 import { useState, useContext } from "react"
 import { Form, Button, Container } from "react-bootstrap"
-import { useNavigate } from "react-router"
+import { useLocation, useNavigate } from "react-router"
 import UserContext from "../contexts/UserProvider.jsx"
 import "../css/LoginForm.css"
 import "../css/Button.css"
@@ -11,7 +11,10 @@ const LoginForm = () => {
   const [errormsg, setErrormsg] = useState("")
   
   const navigate = useNavigate()
+  const location = useLocation()
   const { login } = useContext(UserContext)
+
+  const destination = location.state?.from || "/home";
 
   const doSubmit = async (e) => {
     e.preventDefault()
@@ -24,7 +27,7 @@ const LoginForm = () => {
 
     try {
       await login(username, password)
-      navigate("/home")
+      navigate(destination, { replace: true });
     } catch {
       setErrormsg("Wrong logins.")
     }
