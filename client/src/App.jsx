@@ -15,8 +15,8 @@ function App() {
     <UserProvider>
         <Routes>
           <Route path="/" element={<MainLayout/>}>
-            <Route path="login" element={<LoginForm />} />
             <Route index element={<LandingPage />} />
+            <Route path="login" element={<LoginForm />} />
             <Route path="home" element={<HomeView />} />
             {/* <Route path="game" element={<Game />} /> */}
             {/* <Route path="leaderboard" element={<Leaderboard/>} /> */}

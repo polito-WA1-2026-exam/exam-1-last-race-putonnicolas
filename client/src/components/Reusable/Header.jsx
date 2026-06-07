@@ -1,6 +1,6 @@
 import { useContext } from "react"
-import { Button, Container, Navbar, Row } from "react-bootstrap"
-import { Link, useNavigate } from 'react-router'
+import { Button, Container, Navbar } from "react-bootstrap"
+import { useNavigate } from 'react-router'
 import UserContext from "../../contexts/UserProvider.jsx"
 import "../../css/Header.css"
 import "../../css/Button.css"
@@ -10,19 +10,22 @@ import { STRINGS } from "../../constants/strings.js"
 export function Header() {
 
   const userContext = useContext(UserContext)
-
-  const destination = userContext.id ? '/home' : '/'
   
   return (
-    <Navbar className="custom-navbar" expand="lg" >
+    <Navbar className="custom-navbar grainy" expand="lg" sticky="top">
       <Container>
-        <Navbar.Brand href={destination}>
+        <Navbar.Brand href={'/home' }>
           <img
             alt="Logo Last Race"
             src={logoImage}
             className="navbar-logo" 
           />
         </Navbar.Brand>
+        {userContext.user ? 
+          <Button className="btn-join-race">
+            <span className="text-slide">{STRINGS.header.launchGame}</span>
+          </Button>
+        : <></> }
 
         {userContext.user ? <UserInfo name={userContext.user.username}/> : <LoginButton/>}
       </Container>
@@ -59,8 +62,6 @@ function LogoutButton() {
 }
 
 function UserInfo({ name }) {
-  const navigate = useNavigate()
-
   return (
     <div className="d-flex align-items-center gap-3">
       <span className="user-greeting">{name.toUpperCase()}</span>

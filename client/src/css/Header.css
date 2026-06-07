@@ -2,6 +2,7 @@
   background-color: var(--color-bg-surface, #251D47); 
   padding: 1rem 0;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); 
+  border-radius: 0 0 1em 1em;
 }
 
 .navbar-logo {

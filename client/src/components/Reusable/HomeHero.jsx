@@ -1,6 +1,7 @@
 import subwayImg from '../../assets/subway.png'
 import {STRINGS} from '../../constants/strings.js'
 import { Button, Col, Row } from 'react-bootstrap'
+import "../../css/Button.css"
 
 const HomeHero = () => {
   return (
@@ -20,7 +21,7 @@ const HomeHero = () => {
       
       <div className="hero-actions d-flex flex-wrap align-items-center gap-3">
         <Button className="btn-join-race">
-          {STRINGS.home.btnJoin}
+          <span className="text-slide">{STRINGS.home.btnJoin}</span>
         </Button>
         
         <div className="starting-coins-badge">

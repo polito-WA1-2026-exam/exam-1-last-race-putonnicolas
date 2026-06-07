@@ -11,3 +11,15 @@ main.container {
   display: flex;
   flex-direction: column;
 }
+
+html, body {
+  background-color: #1A1433;
+  overscroll-behavior-y: none;
+}
+
+.grainy {
+  background: 
+    linear-gradient(rgba(37, 29, 71, 0.78), rgba(37, 29, 71, 0.78)),
+    url('../assets/noise-light.png');
+  background-repeat: repeat;
+}

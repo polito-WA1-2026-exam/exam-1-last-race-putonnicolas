@@ -1,6 +1,7 @@
 export const STRINGS = {
   header: {
-    logout: "LOGOUT"
+    logout: "LOGOUT",
+    launchGame : "LAUNCH A GAME"
   },
   home: {
     badge: "JOIN THE GAME NOW!",
@@ -8,7 +9,7 @@ export const STRINGS = {
     description: "Outsmart your rivals in the world's most chaotic underground race. Manage your tokens, plan your routes, and be the first to reach the terminal.",
     btnJoin: "JOIN THE RACE",
     startingCoins: "20 STARTING COINS",
-    rulesTitle: "HOW TO PLAY",
+    rulesTitle: "HOW TO PLAY?",
     
     phasesSection: {
       title: "THE 4 PHASES",
