@@ -25,6 +25,7 @@ function App() {
               <Route path="game" element={<Game />} />
             </Route>
 
+            <Route path="*" element={<ErrorPage />} />
           </Route>
         </Routes>
     </UserProvider>
