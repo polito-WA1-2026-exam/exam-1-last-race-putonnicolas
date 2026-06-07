@@ -14,18 +14,13 @@ export function Header() {
   return (
     <Navbar className="custom-navbar grainy" expand="lg" sticky="top">
       <Container>
-        <Navbar.Brand href={'/home' }>
+        <Navbar.Brand href={'/' }>
           <img
             alt="Logo Last Race"
             src={logoImage}
             className="navbar-logo" 
           />
         </Navbar.Brand>
-        {userContext.user ? 
-          <Button className="btn-join-race">
-            <span className="text-slide">{STRINGS.header.launchGame}</span>
-          </Button>
-        : <></> }
 
         {userContext.user ? <UserInfo name={userContext.user.username}/> : <LoginButton/>}
       </Container>
@@ -49,7 +44,7 @@ function LogoutButton() {
       onClick={() => 
       {
         userContext.logout()
-        navigate('/home')
+        navigate('/')
       }
       }
     >
