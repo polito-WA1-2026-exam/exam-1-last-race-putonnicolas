@@ -10,7 +10,7 @@ const Stations = ({ startStation, endStation }) => {
         <p className="station-label text-uppercase mb-0 text-white-50" style={{ fontSize: '0.7rem' }}>
           {STRINGS.game.start}
         </p>
-        <span className="station-name text-info fw-bold">
+        <span className="station-name text-info fw-bold text-nowrap">
           {startStation.name}
         </span>
       </Card>
@@ -28,7 +28,7 @@ const Stations = ({ startStation, endStation }) => {
         <p className="station-label text-uppercase mb-0 text-white-50" style={{ fontSize: '0.7rem' }}>
           {STRINGS.game.end}
         </p>
-        <span className="station-name text-warning fw-bold">
+        <span className="station-name text-warning fw-bold text-nowrap">
           {endStation.name}
         </span>
       </Card>

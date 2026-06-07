@@ -4,6 +4,7 @@ import {getGameSetup} from '../../src/api/game.js'
 import { Card, Col, Container, Row } from "react-bootstrap"
 import Stations from "./Reusable/Stations.jsx"
 import '../css/Game.css'
+import Timer from "./Reusable/Timer.jsx"
 
 const Game = () => {
   const [gameData, setGameData] = useState(null)
@@ -36,7 +37,7 @@ const Game = () => {
   }
 
   return (
-    <Container fluid className="game-container p-4">
+    <Container fluid className="game-container p-4 w-100">
       <Row className="h-100 g-4">
         
         <Col lg={7} className="h-100">
@@ -53,11 +54,20 @@ const Game = () => {
 
         <Col lg={5} className="h-100 d-flex flex-column gap-3">
           
-          <Card className="bg-arcade-panel border-0 rounded-4 shadow flex-shrink-0">
-            <Card.Body className="p-2 text-white">
-              <Stations startStation={gameData.startStation} endStation={gameData.endStation} />
-            </Card.Body>
-          </Card>
+          <div className="d-flex flex-row gap-2">
+            <Card className="bg-arcade-panel border-0 rounded-4 shadow flex-grow-1 overflow-hidden">
+              <Card.Body className="p-2 text-white d-flex align-items-center justify-content-center">
+                <Stations startStation={gameData.startStation} endStation={gameData.endStation} />
+              </Card.Body>
+            </Card>
+
+            <Card className="bg-arcade-panel border-0 rounded-4 shadow d-flex justify-content-center">
+              <Card.Body className="p-2 text-white d-flex align-items-center justify-content-center">
+                <Timer initialSeconds={90} onTimeUp={() => {}} />
+              </Card.Body>
+            </Card>
+
+          </div>
 
           <Row className="flex-grow-1 overflow-hidden g-3 m-0">
             
