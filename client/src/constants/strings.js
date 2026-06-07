@@ -53,5 +53,9 @@ export const STRINGS = {
     description: "Looks like your racing career took a detour into the subway vents. This line is closed for repairs!",
     btnHome: "RETURN TO HOME STATION",
     btnBack: "PREVIOUS LAP"
+  },
+  game: {
+    start: "STARTING STATION",
+    end: "DESTINATION",
   }
 };
