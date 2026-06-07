@@ -6,6 +6,7 @@ import Stations from "./Reusable/Stations.jsx"
 import '../css/Game.css'
 import Timer from "./Reusable/Timer.jsx"
 import SegmentList from "./Reusable/SegmentList.jsx"
+import ChoosedPath from "./Reusable/ChoosedPath.jsx"
 
 const Game = () => {
   const [gameData, setGameData] = useState(null)
@@ -14,6 +15,8 @@ const Game = () => {
   const [selectedSegments, setSelectedSegments] = useState([])
 
   const handleAddSegment = (segment) => {
+    console.log(segment);
+    
     setSelectedSegments([...selectedSegments, segment]);
   }
 
@@ -22,8 +25,10 @@ const Game = () => {
   }
 
   const availableSegments = gameData 
-    ? gameData.network.segments.filter(s => !selectedSegments.find(sel => sel.id === s.id))
-    : []
+  ? gameData.network.segments.filter(s => 
+      !selectedSegments.find(sel => sel && sel.id === s.id)
+    )
+  : [];
 
   useEffect(() => {
     getGameSetup()
@@ -59,7 +64,7 @@ const Game = () => {
           <Card className="bg-arcade-panel border-0 rounded-4 shadow">
             <Card.Body className="p-3">
               <Card.Title className="arcade-title mb-2">Trajet choisi</Card.Title>
-              <div className="text-white">Liste des choix...</div>
+              <ChoosedPath segments={selectedSegments} stations={gameData.network.stations} onRemove={handleRemoveSegment}/>
             </Card.Body>
           </Card>
         </Col>
@@ -76,6 +81,7 @@ const Game = () => {
           </Card>
         </Col>
 
+        {/* Right infos */}
         <Col lg={5} className="h-100 d-flex flex-column gap-3">
           
           {/* Station + timer */}
@@ -97,9 +103,8 @@ const Game = () => {
             <Card.Body className="d-flex flex-column p-3 overflow-hidden">
               <Card.Title className="arcade-title mb-3">Segments disponibles</Card.Title>
               
-              {/* C'est cette div qui va scroller */}
               <div className="overflow-auto flex-grow-1 custom-scrollbar pe-2">
-                <SegmentList segments={availableSegments} stations={gameData.network.stations} />
+                <SegmentList segments={availableSegments} stations={gameData.network.stations} onAdd={handleAddSegment} />
               </div>
             </Card.Body>
           </Card>
