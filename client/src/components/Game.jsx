@@ -5,11 +5,25 @@ import { Card, Col, Container, Row } from "react-bootstrap"
 import Stations from "./Reusable/Stations.jsx"
 import '../css/Game.css'
 import Timer from "./Reusable/Timer.jsx"
+import SegmentList from "./Reusable/SegmentList.jsx"
 
 const Game = () => {
   const [gameData, setGameData] = useState(null)
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState("")
+  const [selectedSegments, setSelectedSegments] = useState([])
+
+  const handleAddSegment = (segment) => {
+    setSelectedSegments([...selectedSegments, segment]);
+  }
+
+  const handleRemoveSegment = (segmentId) => {
+    setSelectedSegments(selectedSegments.filter(s => s.id !== segmentId));
+  }
+
+  const availableSegments = gameData 
+    ? gameData.network.segments.filter(s => !selectedSegments.find(sel => sel.id === s.id))
+    : []
 
   useEffect(() => {
     getGameSetup()
@@ -37,64 +51,59 @@ const Game = () => {
   }
 
   return (
-    <Container fluid className="game-container p-4 w-100">
-      <Row className="h-100 g-4">
+    <Container fluid className="game-container w-100 h-100 d-flex flex-column p-1">
+  
+      {/* Path choosed */}
+      <Row className="mb-3 flex-shrink-0">
+        <Col>
+          <Card className="bg-arcade-panel border-0 rounded-4 shadow">
+            <Card.Body className="p-3">
+              <Card.Title className="arcade-title mb-2">Trajet choisi</Card.Title>
+              <div className="text-white">Liste des choix...</div>
+            </Card.Body>
+          </Card>
+        </Col>
+      </Row>
+
+      <Row className="flex-grow-1 overflow-hidden g-3">
         
+        {/* Map */}
         <Col lg={7} className="h-100">
           <Card className="h-100 bg-arcade-panel border-0 rounded-4 shadow">
             <Card.Body className="p-2">
-              <MapRenderer 
-                network={gameData.network} 
-                startStation={gameData.startStation}
-                endStation={gameData.endStation}
-              />
+              <MapRenderer network={gameData.network} startStation={gameData.startStation} endStation={gameData.endStation} />
             </Card.Body>
           </Card>
         </Col>
 
         <Col lg={5} className="h-100 d-flex flex-column gap-3">
           
+          {/* Station + timer */}
           <div className="d-flex flex-row gap-2">
             <Card className="bg-arcade-panel border-0 rounded-4 shadow flex-grow-1 overflow-hidden">
-              <Card.Body className="p-2 text-white d-flex align-items-center justify-content-center">
+              <Card.Body className="px-3 py-2 text-white d-flex align-items-center justify-content-center">
                 <Stations startStation={gameData.startStation} endStation={gameData.endStation} />
               </Card.Body>
             </Card>
-
             <Card className="bg-arcade-panel border-0 rounded-4 shadow d-flex justify-content-center">
               <Card.Body className="p-2 text-white d-flex align-items-center justify-content-center">
                 <Timer initialSeconds={90} onTimeUp={() => {}} />
               </Card.Body>
             </Card>
-
           </div>
 
-          <Row className="flex-grow-1 overflow-hidden g-3 m-0">
-            
-            <Col xs={6} className="h-100 p-0 pe-2">
-              <Card className="h-100 bg-arcade-panel border-0 rounded-4 shadow">
-                <Card.Body className="d-flex flex-column p-3">
-                  <Card.Title className="arcade-title mb-3">Trajet choisi</Card.Title>
-                  <div className="overflow-auto flex-grow-1 custom-scrollbar pe-2 text-white">
-                    Liste des choix...
-                  </div>
-                </Card.Body>
-              </Card>
-            </Col>
-
-            <Col xs={6} className="h-100 p-0 ps-2">
-              <Card className="h-100 bg-arcade-panel border-0 rounded-4 shadow">
-                <Card.Body className="d-flex flex-column p-3">
-                  <Card.Title className="arcade-title mb-3">Segments disponibles</Card.Title>
-                  <div className="overflow-auto flex-grow-1 custom-scrollbar pe-2 text-white">
-                    {/* <SegmentList/> */}
-                    Liste des segments...
-                  </div>
-                </Card.Body>
-              </Card>
-            </Col>
-
-          </Row>
+          {/*  Availaible Segments */}
+          <Card className="h-100 bg-arcade-panel border-0 rounded-4 shadow d-flex flex-column">
+            <Card.Body className="d-flex flex-column p-3 overflow-hidden">
+              <Card.Title className="arcade-title mb-3">Segments disponibles</Card.Title>
+              
+              {/* C'est cette div qui va scroller */}
+              <div className="overflow-auto flex-grow-1 custom-scrollbar pe-2">
+                <SegmentList segments={availableSegments} stations={gameData.network.stations} />
+              </div>
+            </Card.Body>
+          </Card>
+          
         </Col>
       </Row>
     </Container>

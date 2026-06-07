@@ -7,10 +7,9 @@ const MainLayout = () => {
   return (
     <div className="app-viewport d-flex flex-column min-vh-100 w-100">
       <Header></Header>
-      <Container fluid as="main" className="d-flex flex-column flex-grow-1 py-4">
+      <Container fluid as="main" className="d-flex flex-column flex-grow-1 py-2">
         <Outlet />
       </Container>
-      {/* <Footer></Footer> */}
     </div>
   )
 }
