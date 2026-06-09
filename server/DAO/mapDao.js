@@ -25,9 +25,15 @@ export const getMap = async () => {
     const linesRows = await fetchAll("SELECT * FROM lines");
     const segmentsRows = await fetchAll("SELECT * FROM segments");
 
-    const stations = stationsRows.map((s) => new Station(s.id, s.name));
+    const stations = stationsRows.map((s) => new Station(s.id, s.name, s.x, s.y));
     const lines = linesRows.map((l) => new Line(l.id, l.name, l.color));
-    const segments = segmentsRows.map((s) => new Segment(s.id, s.station1Id, s.station2Id, s.lineId));
+    
+    const segments = [];
+    
+    segmentsRows.forEach((s) => {
+      segments.push(new Segment(s.id, s.station1Id, s.station2Id, s.lineId));
+      segments.push(new Segment(-s.id, s.station2Id, s.station1Id, s.lineId));
+    });
 
     console.log(`[DAO] Map successfully retrieved: ${stations.length} stations, ${lines.length} lines, ${segments.length} segments.`);
     
