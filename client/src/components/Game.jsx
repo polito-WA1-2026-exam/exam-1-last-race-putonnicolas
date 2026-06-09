@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react"
 import MapRenderer from "./Reusable/MapRenderer.jsx"
-import {getGameSetup} from '../../src/api/game.js'
-import { Card, Col, Container, Row } from "react-bootstrap"
+import {getGameSetup, submitPath } from '../../src/api/game.js'
+import { Card, Col, Container, Row, Button } from "react-bootstrap"
 import Stations from "./Reusable/Stations.jsx"
 import '../css/Game.css'
+import '../css/Button.css'
 import Timer from "./Reusable/Timer.jsx"
 import SegmentList from "./Reusable/SegmentList.jsx"
 import ChoosedPath from "./Reusable/ChoosedPath.jsx"
@@ -14,32 +15,54 @@ const Game = () => {
   const [error, setError] = useState("")
   const [selectedSegments, setSelectedSegments] = useState([])
 
+  const handleSubmitPath = () => {
+    if (selectedSegments.length === 0) return
+
+    const routeArray = [
+      selectedSegments[0].station1Id,
+      ...selectedSegments.map(segment => segment.station2Id)
+    ]
+
+    submitPath(routeArray)
+      .then((result) => {
+        if (result.isValid) {
+          alert(`Score: ${result.finalScore} coins. New record: ${result.isNewRecord}`)
+        } else {
+          alert("Wrong path !")
+        }
+      })
+      .catch((err) => {
+        console.error(err)
+        setError(err.message)
+      })
+  }
+
   const handleAddSegment = (segment) => {
-    console.log(segment);
+    console.log(segment)
     
-    setSelectedSegments([...selectedSegments, segment]);
+    setSelectedSegments([...selectedSegments, segment])
   }
 
   const handleRemoveSegment = (segmentId) => {
-    setSelectedSegments(selectedSegments.filter(s => s.id !== segmentId));
+    setSelectedSegments(selectedSegments.filter(s => s.id !== segmentId))
   }
 
   const availableSegments = gameData 
   ? gameData.network.segments.filter(s => 
       !selectedSegments.find(sel => sel && sel.id === s.id)
     )
-  : [];
+  : []
 
   useEffect(() => {
     getGameSetup()
       .then((data) => {
-        setGameData(data);
+        setGameData(data)
       })
       .catch((err) => {
-        setError(err.message);
+        setError(err.message)
       })
       .finally(() => {
-        setLoading(false);
+        setLoading(false)
       })
   }, [])
 
@@ -48,11 +71,11 @@ const Game = () => {
       <div className="d-flex justify-content-center align-items-center min-vh-100">
         <div className="spinner-border text-light" role="status"></div>
       </div>
-    );
+    )
   }
 
   if (error) {
-    return <div className="text-danger text-center mt-5">{error}</div>;
+    return <div className="text-danger text-center mt-5">{error}</div>
   }
 
   return (
@@ -62,9 +85,26 @@ const Game = () => {
       <Row className="mb-3 flex-shrink-0">
         <Col>
           <Card className="bg-arcade-panel border-0 rounded-4 shadow">
-            <Card.Body className="p-3">
-              <Card.Title className="arcade-title mb-2">Trajet choisi</Card.Title>
-              <ChoosedPath segments={selectedSegments} stations={gameData.network.stations} onRemove={handleRemoveSegment}/>
+            <Card.Body className="p-2 d-flex flex-row align-items-center gap-3">
+              
+              <div className="d-flex flex-column flex-grow-1 overflow-hidden">
+                <Card.Title className="arcade-title m-2">Trajet choisi</Card.Title>
+                <ChoosedPath 
+                  segments={selectedSegments} 
+                  stations={gameData.network.stations} 
+                  onRemove={handleRemoveSegment}
+                />
+              </div>
+
+              <Button 
+                className="btn-arcade-login d-flex align-items-center gap-2 flex-shrink-0" 
+                onClick={handleSubmitPath}
+                disabled={selectedSegments.length === 0}
+              >
+                <span>Submit path</span>
+                <span style={{ fontSize: '1.1rem', lineHeight: '1' }}>➔</span>
+              </Button>
+
             </Card.Body>
           </Card>
         </Col>
