@@ -32,6 +32,67 @@
   background: rgba(0, 209, 255, 0.6);
 }
 
+.game-container,
+.game-container .map-column,
+.game-container .map-card,
+.game-container .map-card-body,
+.game-container .segments-card,
+.game-container .segments-card-body,
+.game-container .segments-scroll-container,
+.game-main-row,
+.game-main-row > .col,
+.game-main-row > .col > .card {
+  min-height: 0;
+}
+
+.game-main-row {
+  flex: 1 1 0;
+  height: 100%;
+  max-height: calc(100vh - 220px);
+}
+
+.map-card,
+.segments-card {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  height: 100%;
+}
+
+.map-card-body,
+.segments-card-body {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 0;
+  min-height: 0;
+}
+
+.map-viewport {
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #1A1433;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 16px;
+  padding: 10px;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.map-svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.segments-scroll-container {
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+}
 
 .station-card {
   min-width: 200px;

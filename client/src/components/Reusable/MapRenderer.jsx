@@ -3,8 +3,8 @@ export default function MapRenderer({ network, startStation, endStation }) {
   const {width, height} = {width: 800, height: 600}
 
   return (
-    <div className="map-wrapper" style={{ backgroundColor: "#1A1433", borderRadius: "16px", padding: "20px" }}>
-      <svg viewBox={`0 0 ${width} ${height}`} width="100%" height="100%">
+    <div className="map-viewport">
+      <svg viewBox={`0 0 ${width} ${height}`} preserveAspectRatio="xMidYMid meet" className="map-svg">
         
         {network.segments.map((segment) => {
           const station1 = getStationById(segment.station1Id)
