@@ -209,6 +209,16 @@ const Game = () => {
         onClose={() => {
           setGamePhase(GAME_PHASES.SETUP)
           setSelectedSegments([])
+          getGameSetup()
+            .then((data) => {
+              setGameData(data)
+            })
+            .catch((err) => {
+              setError(err.message)
+            })
+            .finally(() => {
+              setLoading(false)
+            })
         }}
       />
     </Container>
