@@ -14,10 +14,10 @@ console.log("SegmentList rendu avec onAdd :", typeof onAdd); // <--- AJOUTE ÇA
   return (
 <div style={{
   display: "grid",
-  gridTemplateColumns: "repeat(auto-fill, minmax(140px, 1fr))", // S'adapte dynamiquement
+  gridTemplateColumns: "repeat(auto-fill, minmax(140px, 1fr))",
   gap: "0.5rem",
-  width: "100%", // Force le conteneur à prendre toute la largeur
-  height: "100%" // Force le conteneur à prendre toute la hauteur
+  width: "100%",
+  alignContent: "start" 
 }}>
       {sortedSegments.map((s) => (
         <div key={s.id} onClick={

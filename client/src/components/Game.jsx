@@ -3,7 +3,6 @@ import MapRenderer from "./Reusable/MapRenderer.jsx"
 import {getGameSetup, submitPath } from '../../src/api/game.js'
 import { Card, Col, Container, Row, Button } from "react-bootstrap"
 import Stations from "./Reusable/Stations.jsx"
-import tclLogo from '../assets/tcl-logo.svg'
 import '../css/Game.css'
 import '../css/Button.css'
 import Timer from "./Reusable/Timer.jsx"
