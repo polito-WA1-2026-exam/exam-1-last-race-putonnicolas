@@ -1,4 +1,4 @@
-export default function MapRenderer({ network, startStation, endStation }) {
+export default function MapRenderer({ network, startStation, endStation, showStartAndEnd, showLines }) {
   const getStationById = (id) => network.stations.find(s => s.id === id)
   const {width, height} = {width: 800, height: 600}
 
@@ -6,7 +6,7 @@ export default function MapRenderer({ network, startStation, endStation }) {
     <div className="map-viewport">
       <svg viewBox={`0 0 ${width} ${height}`} preserveAspectRatio="xMidYMid meet" className="map-svg">
         
-        {network.segments.map((segment) => {
+        {showLines && network.segments.map((segment) => {
           const station1 = getStationById(segment.station1Id)
           const station2 = getStationById(segment.station2Id)
           const line = network.lines.find(l => l.id === segment.lineId)
@@ -34,10 +34,10 @@ export default function MapRenderer({ network, startStation, endStation }) {
           let circleColor = "#FFFFFF"
           let circleRadius = "12"
           
-          if (isStart) {
+          if (isStart && showStartAndEnd) {
             circleColor = "#00D1FF"
             circleRadius = "16"
-          } else if (isEnd) {
+          } else if (isEnd && showStartAndEnd) {
             circleColor = "#FF3366"
             circleRadius = "16"
           }

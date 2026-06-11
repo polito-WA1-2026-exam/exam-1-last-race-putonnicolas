@@ -60,6 +60,16 @@ export const STRINGS = {
     availableSegments: "Available segments",
     submitPath: "Submit path",
     path: "Choosed path",
-    noPath: "No path choosed yet... choose some stations!"
+    noPath: "No path choosed yet... choose some stations!",
+    startGame: "START THE GAME",
+    readyToPlay: "READY TO PLAY?",
+    readyToPlayDesc: "Look at the map and memorize it!\n\nOnce you're ready, start the timer you'll have 90 seconds to plan your route!"
   }
 };
+
+export const GAME_PHASES = Object.freeze({
+  SETUP: 'SETUP', // Full map with connections, no finish and start stations
+  PLANNING: 'PLANNING', // Map without connections, player need to create path
+  EXECUTION: 'EXECUTION', // Apply the events or show that path is unvalid
+  RESULT: 'RESULT' // Pop-up with result (coins or lose) 
+})
