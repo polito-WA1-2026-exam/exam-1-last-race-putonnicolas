@@ -9,6 +9,7 @@ import Timer from "./Reusable/Timer.jsx"
 import SegmentList from "./Reusable/SegmentList.jsx"
 import ChoosedPath from "./Reusable/ChoosedPath.jsx"
 import { STRINGS, GAME_PHASES} from "../constants/strings.js"
+import GameResultPopup from "./Reusable/GameResultPopup.jsx"
 
 
 const Game = () => {
@@ -17,7 +18,14 @@ const Game = () => {
   const [error, setError] = useState("")
   const [selectedSegments, setSelectedSegments] = useState([])
   const [gamePhase, setGamePhase] = useState(GAME_PHASES.SETUP)
-
+  const [gameResult, setGameResult] = useState({ 
+    show: false, 
+    isVictory: false, 
+    score: 0, 
+    message: '', 
+    isNewRecord: false 
+  })
+  
   const handleSubmitPath = () => {
     if (selectedSegments.length === 0) return
 
@@ -28,12 +36,17 @@ const Game = () => {
 
     submitPath(routeArray)
       .then((result) => {
-        if (result.isValid) {
-          alert(`Score: ${result.finalScore} coins. New record: ${result.isNewRecord}`)
-        } else {
-          alert("Wrong path !")
-        }
-        setGamePhase(GAME_PHASES.EXECUTION)
+        setGameResult({
+          show: true,
+          isVictory: result.isValid,
+          score: result.isValid ? result.finalScore : 0,
+          isNewRecord: result.isValid ? result.isNewRecord : false,
+          message: result.isValid 
+            ? STRINGS.game.validPath
+            : STRINGS.game.unvalidPath
+        })
+
+        setGamePhase(GAME_PHASES.RESULT)
       })
       .catch((err) => {
         console.error(err)
@@ -49,24 +62,6 @@ const Game = () => {
     setSelectedSegments(selectedSegments.filter(s => s.id !== segmentId))
   }
 
-  const handleTimesUp = () => {
-    if (selectedSegments.length != 0)
-    {
-      submitPath(routeArray)
-        .then((result) => {
-          if (result.isValid) {
-            alert(`Score: ${result.finalScore} coins. New record: ${result.isNewRecord}`)
-          } else {
-            alert("Wrong path !")
-          }
-          setGamePhase(GAME_PHASES.EXECUTION)
-        })
-        .catch((err) => {
-          setError(err.message)
-      })
-    }
-  }
-
   const availableSegments = gameData 
   ? gameData.network.segments.filter(s => {
       
@@ -75,11 +70,11 @@ const Game = () => {
           (sel.station1Id === s.station1Id && sel.station2Id === s.station2Id) ||
           (sel.station1Id === s.station2Id && sel.station2Id === s.station1Id)
         )
-      );
+      )
 
-      return !isAlreadyUsed;
+      return !isAlreadyUsed
     })
-  : [];
+  : []
 
   useEffect(() => {
     getGameSetup()
@@ -145,7 +140,6 @@ const Game = () => {
         
         {/* Map */}
         <Col lg={7} className="d-flex flex-column overflow-hidden map-column">
-
           <Card className="flex-grow-1 bg-arcade-panel border-0 rounded-4 shadow overflow-hidden map-card">
             <Card.Body className="p-2 d-flex flex-column overflow-hidden map-card-body">
               <MapRenderer network={gameData.network} startStation={gameData.startStation} endStation={gameData.endStation} showStartAndEnd={gamePhase !== GAME_PHASES.SETUP} showLines={gamePhase !== GAME_PHASES.PLANNING}/>
@@ -167,7 +161,7 @@ const Game = () => {
                 </Card>
                 <Card className="bg-arcade-panel border-0 rounded-4 shadow d-flex justify-content-center">
                   <Card.Body className="p-2 text-white d-flex align-items-center justify-content-center">
-                    <Timer initialSeconds={90} onTimeUp={handleTimesUp} />
+                    <Timer initialSeconds={90} onTimeUp={handleSubmitPath} />
                   </Card.Body>
                 </Card>
               </div>
@@ -205,6 +199,18 @@ const Game = () => {
           )}
         </Col>
       </Row>
+
+      <GameResultPopup 
+        show={gamePhase === GAME_PHASES.RESULT}
+        isVictory={gameResult.isVictory}
+        score={gameResult.score}
+        isNewRecord={gameResult.isNewRecord}
+        message={gameResult.message}
+        onClose={() => {
+          setGamePhase(GAME_PHASES.SETUP)
+          setSelectedSegments([])
+        }}
+      />
     </Container>
   )
 }

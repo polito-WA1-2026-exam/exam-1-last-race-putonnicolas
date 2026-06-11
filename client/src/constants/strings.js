@@ -63,7 +63,18 @@ export const STRINGS = {
     noPath: "No path choosed yet... choose some stations!",
     startGame: "START THE GAME",
     readyToPlay: "READY TO PLAY?",
-    readyToPlayDesc: "Look at the map and memorize it!\n\nOnce you're ready, start the timer you'll have 90 seconds to plan your route!"
+    readyToPlayDesc: "Look at the map and memorize it!\n\nOnce you're ready, start the timer you'll have 90 seconds to plan your route!",
+    validPath: "Well done! You killed it 😎",
+    unvalidPath: "Invalid route! This path does not comply with the network rules.",
+    result: {
+      newRecord: "🔥 New Record ! 🔥",
+      victory: "Victory!",
+      defeat: "You lose...",
+      leaderboard: "See leaderboard ➔",
+      tryAgain: "Try again !",
+      continue: "Continue",
+      finalScore: "Final score :"
+    },
   }
 };
 
