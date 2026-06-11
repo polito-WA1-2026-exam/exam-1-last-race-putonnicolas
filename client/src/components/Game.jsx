@@ -8,6 +8,7 @@ import '../css/Button.css'
 import Timer from "./Reusable/Timer.jsx"
 import SegmentList from "./Reusable/SegmentList.jsx"
 import ChoosedPath from "./Reusable/ChoosedPath.jsx"
+import { STRINGS } from "../constants/strings.js"
 
 const Game = () => {
   const [gameData, setGameData] = useState(null)
@@ -97,7 +98,7 @@ const Game = () => {
             <Card.Body className="p-2 d-flex flex-row align-items-center gap-3">
               
               <div className="d-flex flex-column flex-grow-1 overflow-hidden">
-                <Card.Title className="arcade-title m-2 map-card-title">Trajet choisi</Card.Title>
+                <Card.Title className="arcade-title m-2 map-card-title">{STRINGS.game.path}</Card.Title>
                 <ChoosedPath 
                   segments={selectedSegments} 
                   stations={gameData.network.stations} 
@@ -110,7 +111,7 @@ const Game = () => {
                 onClick={handleSubmitPath}
                 disabled={selectedSegments.length === 0}
               >
-                <span>Submit path</span>
+                <span>{STRINGS.game.submitPath}</span>
                 <span style={{ fontSize: '1.1rem', lineHeight: '1' }}>➔</span>
               </Button>
 
@@ -151,7 +152,7 @@ const Game = () => {
           {/*  Availaible Segments */}
           <Card className="flex-grow-1 bg-arcade-panel border-0 rounded-4 shadow d-flex flex-column overflow-hidden segments-card">
             <Card.Body className="d-flex flex-column p-3 overflow-hidden segments-card-body">
-              <Card.Title className="arcade-title mb-3">Segments disponibles</Card.Title>
+              <Card.Title className="arcade-title mb-3">{STRINGS.game.availableSegments}</Card.Title>
               
               <div className="overflow-auto flex-grow-1 custom-scrollbar pe-2 segments-scroll-container">
                 <SegmentList segments={availableSegments} stations={gameData.network.stations} onAdd={handleAddSegment} />

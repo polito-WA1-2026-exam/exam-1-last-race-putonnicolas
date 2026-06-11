@@ -60,6 +60,7 @@ export default function MapRenderer({ network, startStation, endStation }) {
                 fontWeight="bold"
                 fontFamily="sans-serif"
                 textAnchor="middle"
+                style={{ userSelect: 'none' }}
               >
                 {station.name}
               </text>

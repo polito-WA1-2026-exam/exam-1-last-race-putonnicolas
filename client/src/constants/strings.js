@@ -57,5 +57,9 @@ export const STRINGS = {
   game: {
     start: "STARTING STATION",
     end: "DESTINATION",
+    availableSegments: "Available segments",
+    submitPath: "Submit path",
+    path: "Choosed path",
+    noPath: "No path choosed yet... choose some stations!"
   }
 };

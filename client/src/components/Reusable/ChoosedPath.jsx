@@ -1,3 +1,4 @@
+import { STRINGS } from '../../constants/strings';
 import { SmallCard } from './SmallCard'
 
 const ChoosedPath = ({ segments, stations, onRemove }) => {
@@ -9,7 +10,7 @@ const ChoosedPath = ({ segments, stations, onRemove }) => {
       style={{ minHeight: '90px' }} 
     >
       {segments.length === 0 ? (
-        <span className="text-white-50 p-2">Aucun segment sélectionné...</span>
+        <span className="text-white-50 p-2">{STRINGS.game.noPath}</span>
       ) : (
         segments.map((s) => {
           const startStation = getStationById(s.station1Id);
