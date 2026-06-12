@@ -1,5 +1,5 @@
-export async function getGameSetup() {
-  const response = await fetch('http://localhost:3001/api/game/setup', {
+export async function getGameSetup(getMap) {
+  const response = await fetch(`http://localhost:3001/api/game/setup?sendMap=${getMap}`, {
     credentials: "include"
   });
 

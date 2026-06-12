@@ -1,7 +1,10 @@
-export default function MapRenderer({ network, startStation, endStation, showStartAndEnd, showLines }) {
+import { memo } from "react";
+
+const MapRenderer = ({ network, startStation, endStation, showStartAndEnd, showLines }) => {
   const getStationById = (id) => network.stations.find(s => s.id === id)
   const {width, height} = {width: 800, height: 600}
-
+  console.log("render");
+  
   return (
     <div className="map-viewport">
       <svg viewBox={`0 0 ${width} ${height}`} preserveAspectRatio="xMidYMid meet" className="map-svg">
@@ -71,3 +74,6 @@ export default function MapRenderer({ network, startStation, endStation, showSta
     </div>
   )
 }
+
+// avoid rendering on new choosed segment
+export default memo(MapRenderer);

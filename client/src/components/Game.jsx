@@ -77,7 +77,7 @@ const Game = () => {
   : []
 
   useEffect(() => {
-    getGameSetup()
+    getGameSetup(true)
       .then((data) => {
         setGameData(data)
       })
@@ -209,9 +209,15 @@ const Game = () => {
         onClose={() => {
           setGamePhase(GAME_PHASES.SETUP)
           setSelectedSegments([])
-          getGameSetup()
-            .then((data) => {
-              setGameData(data)
+
+          setLoading(true)
+
+          getGameSetup(false)
+            .then((newData) => {              
+              setGameData(prevData => ({
+                ...newData,
+                network: prevData.network
+              }))
             })
             .catch((err) => {
               setError(err.message)
