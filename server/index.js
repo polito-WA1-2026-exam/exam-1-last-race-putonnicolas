@@ -90,6 +90,7 @@ app.delete('/api/sessions/current', (req, res) => {
 // Purpose: Retrieve the static network map and random start/end stations
 app.get('/api/game/setup', isLoggedIn, (req, res) => {
   try {
+    const sendMap = String(req.query.sendMap).toLowerCase() === 'true'
     const randomIndex = Math.floor(Math.random() * validPairs.length);
     const selectedPair = validPairs[randomIndex];
 
@@ -104,11 +105,14 @@ app.get('/api/game/setup', isLoggedIn, (req, res) => {
       endStationId: selectedPair.endStation.id
     };
  
-    res.json({
-      network: map,
+    const payload = {
       startStation: selectedPair.startStation,
       endStation: selectedPair.endStation
-    })
+    }
+
+    if (sendMap) payload.network = map
+
+    res.json(payload)
 
   } catch (err) {
     console.error("[ROUTE] Error game setup :", err);
