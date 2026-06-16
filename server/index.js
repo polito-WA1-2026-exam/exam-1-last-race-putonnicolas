@@ -90,25 +90,45 @@ app.delete('/api/sessions/current', (req, res) => {
 // Purpose: Retrieve the static network map and random start/end stations
 app.get('/api/game/setup', isLoggedIn, (req, res) => {
   try {
+    const sendMap = String(req.query.sendMap).toLowerCase() === 'true'
     const randomIndex = Math.floor(Math.random() * validPairs.length);
     const selectedPair = validPairs[randomIndex];
 
     // For testing purposes
-    // req.session.currentGame = {
-    //   startStationId: 12,
-    //   endStationId: 9
-    // };
-
     req.session.currentGame = {
-      startStationId: selectedPair.startStation.id,
-      endStationId: selectedPair.endStation.id
+      startStationId: 1,
+      endStationId: 7
     };
+    
+    const startStation = {
+      id: 1,
+      name: "Charpennes"
+    }
+
+    const endStation =
+    {
+      id: 7,
+      name: "Saxe-Gambetta"
+    }
+
+    const payload = {
+      startStation:startStation,
+      endStation: endStation
+    }
+
+    // req.session.currentGame = {
+    //   startStationId: selectedPair.startStation.id,
+    //   endStationId: selectedPair.endStation.id
+    // };
  
-    res.json({
-      network: map,
-      startStation: selectedPair.startStation,
-      endStation: selectedPair.endStation
-    })
+    // const payload = {
+    //   startStation: selectedPair.startStation,
+    //   endStation: selectedPair.endStation
+    // }
+
+    if (sendMap) payload.network = map
+
+    res.json(payload)
 
   } catch (err) {
     console.error("[ROUTE] Error game setup :", err);
@@ -174,11 +194,17 @@ app.post('/api/game/submit', isLoggedIn, async (req, res) => {
     
     req.session.currentGame = null
     
+    // res.status(200).json({
+    //   isValid: valid,
+    //   finalScore: finalScore,
+    //   journeySteps: journey, 
+    //   isNewRecord: finalScore > req.user.bestScore
+    // })
     res.status(200).json({
       isValid: valid,
       finalScore: finalScore,
       journeySteps: journey, 
-      isNewRecord: finalScore > req.user.bestScore
+      isNewRecord: true
     })
   }
   catch (err)

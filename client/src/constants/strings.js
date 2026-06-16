@@ -53,5 +53,46 @@ export const STRINGS = {
     description: "Looks like your racing career took a detour into the subway vents. This line is closed for repairs!",
     btnHome: "RETURN TO HOME STATION",
     btnBack: "PREVIOUS LAP"
+  },
+  game: {
+    start: "STARTING STATION",
+    end: "DESTINATION",
+    availableSegments: "Available segments",
+    submitPath: "Submit path",
+    path: "Choosed path",
+    noPath: "No path choosed yet... choose some stations!",
+    startGame: "START THE GAME",
+    readyToPlay: "READY TO PLAY?",
+    readyToPlayDesc: "Look at the map and memorize it!\n\nOnce you're ready, start the timer you'll have 90 seconds to plan your route!",
+    validPath: "Well done! You killed it 😎",
+    unvalidPath: "Invalid route! This path does not comply with the network rules.",
+    result: {
+      newRecord: "🔥 New Record ! 🔥",
+      victory: "Victory!",
+      defeat: "You lose...",
+      leaderboard: "See leaderboard ➔",
+      tryAgain: "Try again !",
+      continue: "Continue",
+      finalScore: "Final score :"
+    },
+    events: {
+      title: "Checking your path...",
+      description: "Many events happen in this subway...\nMay the odds be in your favor!",
+      continueButton: "Continue...",
+      closeButton: "See the results ✨",
+      station: "CURRENT STATION",
+      eventTitle: "THE EVENT",
+      win: "You got lucky! : +",
+      lose: "Ohhh no... : ",
+      finalStation: "You reached the final station! Well done!",
+      terminus: "Terminus"    
+    }
   }
 };
+
+export const GAME_PHASES = Object.freeze({
+  SETUP: 'SETUP', // Full map with connections, no finish and start stations
+  PLANNING: 'PLANNING', // Map without connections, player need to create path
+  EXECUTION: 'EXECUTION', // Apply the events or show that path is unvalid
+  RESULT: 'RESULT' // Pop-up with result (coins or lose) 
+})

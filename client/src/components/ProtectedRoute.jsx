@@ -1,10 +1,10 @@
 import { useContext } from "react"
-import { Navigate, Outlet } from "react-router"
+import { Navigate, Outlet, useLocation } from "react-router"
 import UserContext from "../contexts/UserProvider.jsx"
 
 export default function ProtectedRoute() {
   const { user, loading } = useContext(UserContext)
-
+  const location = useLocation()
   if (loading) {
     return (
       <div className="d-flex justify-content-center align-items-center min-vh-100">
@@ -14,7 +14,7 @@ export default function ProtectedRoute() {
   }
 
   if (!user) {
-    return <Navigate to="/login" replace />
+    return <Navigate to="/login" state={{ from: location.pathname }} replace />
   }
 
   return <Outlet />

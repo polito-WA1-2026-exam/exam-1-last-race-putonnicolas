@@ -1,0 +1,40 @@
+import { Card } from "react-bootstrap"
+import { STRINGS } from "../../constants/strings"
+import "../../css/Game.css"
+
+const Stations = ({ startStation, endStation }) => {
+  return (
+    <div className="d-flex align-items-center justify-content-center gap-2 w-100">
+      
+      <Card className="station-card bg-arcade-panel border-0 rounded-4 text-center px-3 py-2 flex-grow-1">
+        <p className="station-label text-uppercase mb-0 text-white-50" style={{ fontSize: '0.7rem' }}>
+          {STRINGS.game.start}
+        </p>
+        <span className="station-name text-info fw-bold text-nowrap">
+          {startStation.name}
+        </span>
+      </Card>
+
+      <div className="station-connector d-flex align-items-center justify-content-center">
+        <div className="connector-icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <polyline points="13 17 18 12 13 7"></polyline>
+            <polyline points="6 17 11 12 6 7"></polyline>
+          </svg>
+        </div>
+      </div>
+
+      <Card className="station-card bg-arcade-panel border-0 rounded-4 text-center px-3 py-2 flex-grow-1">
+        <p className="station-label text-uppercase mb-0 text-white-50" style={{ fontSize: '0.7rem' }}>
+          {STRINGS.game.end}
+        </p>
+        <span className="station-name text-warning fw-bold text-nowrap">
+          {endStation.name}
+        </span>
+      </Card>
+
+    </div>
+  )
+}
+
+export default Stations
