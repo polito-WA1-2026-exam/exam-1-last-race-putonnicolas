@@ -96,7 +96,6 @@ const Events = ({ journey, onClose, stations }) => {
               className="rounded-4 p-4 mb-4" 
               style={{ 
                 backgroundColor: 'rgba(0, 0, 0, 0.25)', 
-                border: '1px solid rgba(0, 209, 255, 0.15)',
                 boxShadow: 'inset 0px 4px 15px rgba(0,0,0,0.3)'
               }}
             >

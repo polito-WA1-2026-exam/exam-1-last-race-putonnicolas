@@ -43,8 +43,16 @@ const GameResultPopup = ({
 
           {isVictory && (
             <div className="mb-4 d-flex flex-column align-items-center w-100">
-              <div className="bg-dark rounded-3 w-100 py-3 mb-2" style={{ border: '1px solid rgba(255,255,255,0.1)' }}>
-                <span className="text-white-50 d-block mb-1" style={{ fontSize: '0.9rem' }}>{STRINGS.game.result.finalScore}</span>
+              <div
+                className="rounded-4 p-4 mb-4" 
+                style={{ 
+                  backgroundColor: 'rgba(0, 0, 0, 0.25)', 
+                  boxShadow: 'inset 0px 4px 15px rgba(0,0,0,0.3)'
+                }}
+              >
+                <p className="station-label text-uppercase mb-0 text-white-50" style={{ fontSize: '0.7rem' }}>
+                  {STRINGS.game.result.finalScore}
+                </p>
                 <h1 className="text-warning display-4 fw-bold mb-0">
                   {score} <span style={{ fontSize: '2.5rem' }}>🪙</span>
                 </h1>
