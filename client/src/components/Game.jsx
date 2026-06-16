@@ -10,6 +10,7 @@ import SegmentList from "./Reusable/SegmentList.jsx"
 import ChoosedPath from "./Reusable/ChoosedPath.jsx"
 import { STRINGS, GAME_PHASES} from "../constants/strings.js"
 import GameResultPopup from "./Reusable/GameResultPopup.jsx"
+import Events from "./Reusable/Events.jsx"
 
 
 const Game = () => {
@@ -19,6 +20,7 @@ const Game = () => {
   const [selectedSegments, setSelectedSegments] = useState([])
   const [gamePhase, setGamePhase] = useState(GAME_PHASES.SETUP)
   const [gameResult, setGameResult] = useState({ 
+    journeySteps: null,
     show: false, 
     isVictory: false, 
     score: 0, 
@@ -35,9 +37,12 @@ const Game = () => {
     ]
 
     submitPath(routeArray)
-      .then((result) => {
+      .then((result) => {   
+        console.log(result);
+         
         setGameResult({
           show: true,
+          journeySteps: result.journeySteps,
           isVictory: result.isValid,
           score: result.isValid ? result.finalScore : 0,
           isNewRecord: result.isValid ? result.isNewRecord : false,
@@ -46,7 +51,7 @@ const Game = () => {
             : STRINGS.game.unvalidPath
         })
 
-        setGamePhase(GAME_PHASES.RESULT)
+        setGamePhase(result.isValid ? GAME_PHASES.EXECUTION : GAME_PHASES.RESULT)
       })
       .catch((err) => {
         console.error(err)
@@ -136,7 +141,7 @@ const Game = () => {
         )
       }
 
-      <Row className="flex-grow-1 overflow-hidden g-3 game-main-row">
+      <Row className={`overflow-hidden g-3 game-main-row ${gamePhase === GAME_PHASES.SETUP ? 'my-auto' : 'flex-grow-1'}`}>
         
         {/* Map */}
         <Col lg={7} className="d-flex flex-column overflow-hidden map-column">
@@ -200,6 +205,14 @@ const Game = () => {
         </Col>
       </Row>
 
+      {gamePhase === GAME_PHASES.EXECUTION && (
+        <Events 
+          journey={gameResult.journeySteps} 
+          onClose={() => setGamePhase(GAME_PHASES.RESULT)} 
+          stations={gameData.network.stations} 
+        />
+      )}
+      
       <GameResultPopup 
         show={gamePhase === GAME_PHASES.RESULT}
         isVictory={gameResult.isVictory}

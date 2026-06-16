@@ -75,6 +75,18 @@ export const STRINGS = {
       continue: "Continue",
       finalScore: "Final score :"
     },
+    events: {
+      title: "Checking your path...",
+      description: "Many events happen in this subway...\nMay the odds be in your favor!",
+      continueButton: "Continue...",
+      closeButton: "See the results ✨",
+      station: "CURRENT STATION",
+      eventTitle: "THE EVENT",
+      win: "You got lucky! : +",
+      lose: "Ohhh no... : ",
+      finalStation: "You reached the final station! Well done!",
+      terminus: "Terminus"    
+    }
   }
 };
 
