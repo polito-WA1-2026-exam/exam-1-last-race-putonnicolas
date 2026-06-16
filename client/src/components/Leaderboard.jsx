@@ -3,26 +3,45 @@ import { Container, Card, Button } from 'react-bootstrap';
 import { useNavigate } from 'react-router';
 import '../css/Game.css';
 import '../css/Button.css';
-
-const MOCK_LEADERBOARD = [
-  { id: 1, username: "RAPHAEL", score: 154, date: "2026-06-15" },
-  { id: 2, username: "BASTIEN", score: 142, date: "2026-06-14" },
-  { id: 3, username: "PIERRE_L", score: 128, date: "2026-06-16" },
-  { id: 4, username: "SOPHIE", score: 95, date: "2026-06-10" },
-  { id: 5, username: "GUEST_99", score: 87, date: "2026-06-16" },
-];
+import { getLeaderboard } from '../../src/api/leaderboard.js';
+import { STRINGS } from '../constants/strings.js';
 
 const Leaderboard = () => {
   const navigate = useNavigate();
   const [scores, setScores] = useState([]);
+  const [error, setError] = useState('');
+  const [userRank, setUserRank] = useState(0);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    setTimeout(() => {
-      setScores(MOCK_LEADERBOARD.slice(0, 5));
-      setLoading(false);
-    }, 800);
-  }, []);
+  useEffect(() => 
+  {
+    getLeaderboard()
+      .then((data) => 
+      {
+        console.log(data);
+        
+        setScores(data.leaderboard)
+        setUserRank(Number(data.currentUserRank))
+      })
+      .catch(
+        (err) => setError(err.message)
+      )
+      .finally(() => {
+        setLoading(false)
+      })
+  }, [])
+
+   if (loading) {
+    return (
+      <div className="d-flex justify-content-center align-items-center min-vh-100">
+        <div className="spinner-border text-light" role="status"></div>
+      </div>
+    ) 
+  }
+
+  if (error) {
+    return <div className="text-danger text-center mt-5">{error}</div>
+  }
 
   const getRankStyle = (index) => {
     switch(index) {
@@ -45,9 +64,11 @@ const Leaderboard = () => {
           {/* HEADER */}
           <div className="text-center mb-3 flex-shrink-0">
             <h1 className="arcade-title fw-bold text-info mb-1" style={{ fontSize: '2.5rem', letterSpacing: '2px' }}>
-              HIGH SCORES
+              {STRINGS.leaderboard.title}
             </h1>
-            <p className="text-white-50 mb-0" style={{ fontSize: '0.9rem' }}>Les meilleurs voyageurs du réseau</p>
+            <p className="text-white-50 mb-0" style={{ fontSize: '0.9rem' }}>
+              {STRINGS.leaderboard.description}
+            </p>
           </div>
 
           {/* SCORE LIST */}
@@ -63,28 +84,44 @@ const Leaderboard = () => {
             {loading ? (
               <div className="text-center py-5 m-auto">
                 <div className="spinner-border text-info" role="status"></div>
-                <p className="text-info mt-3 fw-bold">Chargement...</p>
+                <p className="text-info mt-3 fw-bold">
+                  {STRINGS.leaderboard.loading}
+                </p>
               </div>
             ) : (
               <div className="d-flex flex-column h-100 justify-content-evenly gap-2">
                 
                 <div className="d-flex justify-content-between px-3 pb-2 border-bottom flex-shrink-0" style={{ borderColor: 'rgba(255,255,255,0.1) !important' }}>
-                  <span className="text-white-50 fw-bold text-center" style={{ fontSize: '0.8rem', width: '15%' }}>RANK</span>
-                  <span className="text-white-50 fw-bold text-start" style={{ fontSize: '0.8rem', width: '55%' }}>PLAYER</span>
-                  <span className="text-white-50 fw-bold text-end" style={{ fontSize: '0.8rem', width: '30%' }}>SCORE</span>
+                  <span className="text-white-50 fw-bold text-center" style={{ fontSize: '0.8rem', width: '15%' }}>
+                    {STRINGS.leaderboard.rank}
+                  </span>
+                  <span className="text-white-50 fw-bold text-start" style={{ fontSize: '0.8rem', width: '55%' }}>
+                    {STRINGS.leaderboard.player}
+                  </span>
+                  <span className="text-white-50 fw-bold text-end" style={{ fontSize: '0.8rem', width: '30%' }}>
+                    {STRINGS.leaderboard.score}
+                  </span>
                 </div>
 
                 {scores.map((score, index) => {
                   const rankData = getRankStyle(index);
                   const isTop3 = index < 3;
 
+                  console.log(index);
+                  
+                  const isUser = (index + 1) === userRank; 
+
+                  let backgroundColor = 'transparent';
+                  if (isTop3) backgroundColor = 'rgba(255,255,255,0.05)';
+                  if (isUser) backgroundColor = 'rgba(58, 197, 134, 0.25)';
+
                   return (
                     <div 
-                      key={score.id} 
+                      key={`${score.username}-${score.score}`} 
                       className="d-flex justify-content-between align-items-center p-2 px-md-3 rounded-3"
                       style={{ 
-                        backgroundColor: isTop3 ? 'rgba(255,255,255,0.05)' : 'transparent',
                         border: isTop3 ? `1px solid ${rankData.color}40` : '1px solid transparent',
+                        backgroundColor: backgroundColor,
                         transition: 'background-color 0.2s',
                       }}
                     >
@@ -97,7 +134,7 @@ const Leaderboard = () => {
                       </span>
                       
                       <span className="fw-bold text-end" style={{ width: '30%', color: rankData.color, textShadow: rankData.textShadow, fontSize: isTop3 ? '1.5rem' : '1.2rem' }}>
-                        {score.score} <span style={{ fontSize: '1rem' }}>🪙</span>
+                        {score.bestScore} <span style={{ fontSize: '1rem' }}>🪙</span>
                       </span>
                     </div>
                   );
@@ -112,7 +149,7 @@ const Leaderboard = () => {
             onClick={() => navigate('/home')}
             style={{ fontSize: '1.1rem' }}
           >
-            ➔ Retour au Menu
+            {STRINGS.leaderboard.back}
           </Button>
 
         </Card.Body>

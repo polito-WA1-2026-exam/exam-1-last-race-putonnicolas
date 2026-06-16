@@ -223,7 +223,7 @@ app.get('/api/leaderboard', isLoggedIn, async (req, res) => {
   try{
     const nbTop = parseInt(req.query.nbTop, 10) || 10;
     const leaderboard = await getLeaderboard(nbTop)
-    const rank = await getUserRank(req.user.bestScore)
+    const rank = await getUserRank(req.user.bestScore, req.user.username)
 
     res.json({
       leaderboard: leaderboard,

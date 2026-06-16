@@ -66,8 +66,7 @@ export const getUserById = (id) => {
 
 export const getLeaderboard = (nbTop = 10) => {
   return new Promise((resolve, reject) => {
-    const sql = "SELECT username, bestScore FROM users ORDER BY bestScore DESC LIMIT ?"
-
+    const sql = "SELECT username, bestScore FROM users ORDER BY bestScore DESC, username ASC LIMIT ?"
     db.all(sql, [nbTop], function(err, rows) {
       if (err) {
         console.error(`[DAO] Error fetching leaderboard`, err)
@@ -80,11 +79,11 @@ export const getLeaderboard = (nbTop = 10) => {
   })
 }
 
-export const getUserRank = (userScore) => {
+export const getUserRank = (userScore, username) => {
   return new Promise((resolve, reject) => {
-    const sql = "SELECT COUNT(*) + 1 AS userRank FROM users WHERE bestScore > ?"
+    const sql = "SELECT COUNT(*) + 1 AS userRank FROM users WHERE bestScore > ? OR (bestScore = ? AND username < ?)"
 
-    db.get(sql, [userScore], function(err, row) {
+    db.get(sql, [userScore, userScore, username], function(err, row) {
       if (err) {
         console.error(`[DAO] Error fetching user rank`, err)
         reject(err)

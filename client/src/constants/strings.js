@@ -87,6 +87,15 @@ export const STRINGS = {
       finalStation: "You reached the final station! Well done!",
       terminus: "Terminus"    
     }
+  },
+  leaderboard: {
+    title: "LEADERBOARD",
+    description: "The best travellers from this network...",
+    loading: "Loading...",
+    rank: "RANK",
+    player: "PLAYER",
+    score: "SCORE",
+    back: "➔ BACK TO HOME",
   }
 };
 
