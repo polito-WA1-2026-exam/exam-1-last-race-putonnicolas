@@ -23,6 +23,7 @@ function App() {
             <Route element={<ProtectedRoute />}>
               <Route path="home" element={<HomeView />} />
               <Route path="game" element={<Game />} />
+              <Route path="leaderboard" element={<Leaderboard />} />
             </Route>
 
             <Route path="*" element={<ErrorPage />} />

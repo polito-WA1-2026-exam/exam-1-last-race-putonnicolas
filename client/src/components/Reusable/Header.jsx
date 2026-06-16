@@ -1,6 +1,6 @@
 import { useContext } from "react"
 import { Button, Container, Navbar } from "react-bootstrap"
-import { useNavigate } from 'react-router'
+import { Link, useNavigate } from 'react-router'
 import UserContext from "../../contexts/UserProvider.jsx"
 import "../../css/Header.css"
 import "../../css/Button.css"
@@ -59,8 +59,17 @@ function LogoutButton() {
 function UserInfo({ name }) {
   return (
     <div className="d-flex align-items-center gap-3">
-      <span className="user-greeting">{name.toUpperCase()}</span>
-
+      <Link to="/home" className="text-decoration-none text-reset">
+        <span 
+          className="user-greeting"
+          style={{ cursor: 'pointer', transition: 'opacity 0.2s' }}
+          onMouseEnter={(e) => e.currentTarget.style.opacity = '0.7'}
+          onMouseLeave={(e) => e.currentTarget.style.opacity = '1'}
+        >
+          {name.toUpperCase()}
+        </span>
+      </Link>
+      
       <LogoutButton/>
     </div> 
   )
