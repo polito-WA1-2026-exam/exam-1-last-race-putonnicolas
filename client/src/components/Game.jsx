@@ -29,9 +29,8 @@ const Game = () => {
   })
   
   const handleSubmitPath = () => {
-    if (selectedSegments.length === 0) return
-
-    const routeArray = [
+    
+    const routeArray = selectedSegments.length === 0 ? [] : [
       selectedSegments[0].station1Id,
       ...selectedSegments.map(segment => segment.station2Id)
     ]
