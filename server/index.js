@@ -4,13 +4,14 @@ import express from "express";
 import { getMap } from "./DAO/mapDao.js";
 import fs from "fs";
 import { getLeaderboard, getUser, getUserById, getUserRank, updateBestScore } from "./DAO/userDao.js";
-import { isLoggedIn } from './database/db.js'
+import { isLoggedIn } from './middleware/auth.js'
 import passport from "passport";
 import session from 'express-session'
 import './strategies/localStrategy.js'
 import { getAllEvents } from './DAO/eventDao.js';
 import { isRouteValid } from './graphs/utils.js';
 import cors from 'cors'
+import { initDatabase } from './database/setup_db.js';
 
 // init express
 const app = express();
@@ -36,6 +37,15 @@ app.use(session({
 
 app.use(passport.initialize())
 app.use(passport.authenticate("session"));
+
+// initialize Database
+try {
+  console.log("[SERVER] Checking and initializing database...");
+  await initDatabase();
+} catch (err) {
+  console.error("[SERVER] Critical error during database initialization:", err);
+  process.exit(1); // On coupe le serveur si la BDD plante
+}
 
 // Stores the map in the server's cache since it will be the same for every player.
 console.log("[SERVER] Loading map & valids stations pairs...");
