@@ -194,17 +194,11 @@ app.post('/api/game/submit', isLoggedIn, async (req, res) => {
     
     req.session.currentGame = null
     
-    // res.status(200).json({
-    //   isValid: valid,
-    //   finalScore: finalScore,
-    //   journeySteps: journey, 
-    //   isNewRecord: finalScore > req.user.bestScore
-    // })
     res.status(200).json({
       isValid: valid,
       finalScore: finalScore,
       journeySteps: journey, 
-      isNewRecord: true
+      isNewRecord: finalScore > req.user.bestScore
     })
   }
   catch (err)

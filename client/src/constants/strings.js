@@ -10,6 +10,8 @@ export const STRINGS = {
     btnJoin: "JOIN THE RACE",
     startingCoins: "20 STARTING COINS",
     rulesTitle: "HOW TO PLAY?",
+    newGame: "🎮 NEW GAME",
+    leaderboard: "LEADERBOARD",
     
     phasesSection: {
       title: "THE 4 PHASES",
