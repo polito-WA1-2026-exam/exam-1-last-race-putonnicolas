@@ -161,21 +161,31 @@ app.post('/api/game/submit', isLoggedIn, async (req, res) => {
     }
 
     const finalScore = Math.max(0, coins)
+    const isNewRecord = finalScore > req.user.bestScore
 
-    if (finalScore > req.user.bestScore)
-    {
+    if (isNewRecord) {
       await updateBestScore(req.user.id, finalScore)
+      
       req.user.bestScore = finalScore
+      
+      // Force session saving with passport
+      await new Promise((resolve, reject) => {
+        req.login(req.user, (err) => {
+          if (err) reject(err)
+          else resolve()
+        })
+      })
     }
-    
-    req.session.currentGame = null
+
+    req.session.currentGame = null;
+    console.log(isNewRecord);
     
     res.status(200).json({
       isValid: valid,
       finalScore: finalScore,
       journeySteps: journey, 
-      isNewRecord: finalScore > req.user.bestScore
-    })
+      isNewRecord: isNewRecord
+    });
   }
   catch (err)
   {
