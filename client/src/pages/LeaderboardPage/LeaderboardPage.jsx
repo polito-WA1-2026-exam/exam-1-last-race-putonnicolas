@@ -55,8 +55,14 @@ const LeaderboardPage = () => {
 
   return (
     <Container fluid className="vh-100 d-flex justify-content-center align-items-center p-2 overflow-hidden">
-      <Card className="bg-arcade-panel border-0 rounded-4 shadow-lg p-3 d-flex flex-column arcade-modal-card-full">
-        <Card.Body className="d-flex flex-column align-items-center w-100 p-0 h-100">
+      <Card 
+        className="bg-arcade-panel border-0 rounded-4 shadow-lg p-3 d-flex flex-column arcade-modal-card-full"
+        style={{ minHeight: 0 }}
+      >
+        <Card.Body 
+          className="d-flex flex-column align-items-center w-100 p-0 h-100"
+          style={{ minHeight: 0 }}
+        >
           <div className="text-center mb-3 flex-shrink-0">
             <h1 className="arcade-title fw-bold text-info mb-1 arcade-title-lg">
               {STRINGS.leaderboard.title}
@@ -66,20 +72,27 @@ const LeaderboardPage = () => {
             </p>
           </div>
 
-          <div className="w-100 rounded-4 p-3 mb-4 flex-grow-1 d-flex flex-column justify-content-between arcade-inset-panel-bordered">
-            <div className="d-flex flex-column h-100 justify-content-evenly gap-2">
-              <div className="d-flex justify-content-between px-3 pb-2 border-bottom flex-shrink-0 arcade-section-divider">
-                <span className="text-white-50 fw-bold text-center leaderboard-header-col-rank">
-                  {STRINGS.leaderboard.rank}
-                </span>
-                <span className="text-white-50 fw-bold text-start leaderboard-header-col-player">
-                  {STRINGS.leaderboard.player}
-                </span>
-                <span className="text-white-50 fw-bold text-end leaderboard-header-col-score">
-                  {STRINGS.leaderboard.score}
-                </span>
-              </div>
+          <div 
+            className="w-100 rounded-4 p-3 mb-4 flex-grow-1 d-flex flex-column arcade-inset-panel-scrollable"
+            style={{ minHeight: 0 }}
+          >
+            <div className="d-flex justify-content-between px-3 pb-2 mb-2 border-bottom flex-shrink-0 arcade-section-divider">
+              <span className="text-white-50 fw-bold text-center leaderboard-header-col-rank">
+                {STRINGS.leaderboard.rank}
+              </span>
+              <span className="text-white-50 fw-bold text-start leaderboard-header-col-player">
+                {STRINGS.leaderboard.player}
+              </span>
+              <span className="text-white-50 fw-bold text-end leaderboard-header-col-score">
+                {STRINGS.leaderboard.score}
+              </span>
+            </div>
 
+            {/* Scrollable panel */}
+            <div 
+              className="d-flex flex-column gap-2 pe-2 custom-scrollbar" 
+              style={{ overflowY: 'auto', minHeight: 0 }}
+            >
               {scores.map((score, index) => {
                 const rank = index + 1
                 const rankData = getRankDisplay(index)
@@ -88,7 +101,7 @@ const LeaderboardPage = () => {
                 const isHighlightedUser = isCurrentUser && rank === userRank
 
                 const rowClasses = [
-                  'd-flex justify-content-between align-items-center p-2 rounded-3',
+                  'd-flex justify-content-between align-items-center p-2 rounded-3 flex-shrink-0',
                   isTop3 ? 'leaderboard-row-top3' : '',
                   isHighlightedUser ? 'leaderboard-row-user' : '',
                   isTop3 ? 'leaderboard-row-bordered' : '',

@@ -21,10 +21,15 @@
 .arcade-modal-card-full {
   max-width: 800px;
   width: 100%;
-  max-height: 95vh;
+  height: 80vh;
+  max-height: 80vh;
   border-top: var(--border-accent-top);
 }
-
+.arcade-inset-panel-scrollable {
+  background-color: var(--color-bg-inset);
+  box-shadow: var(--shadow-inset);
+  overflow: hidden;
+}
 .arcade-modal-card-sm {
   max-width: 450px;
   width: 90%;
@@ -47,12 +52,6 @@
 .arcade-inset-panel {
   background-color: var(--color-bg-inset);
   box-shadow: var(--shadow-inset);
-}
-
-.arcade-inset-panel-bordered {
-  background-color: var(--color-bg-inset);
-  box-shadow: var(--shadow-inset);
-  border: 1px solid var(--color-secondary-border);
 }
 
 .arcade-section-divider {
