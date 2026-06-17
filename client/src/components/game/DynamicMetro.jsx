@@ -1,6 +1,9 @@
 import metroIcon from '@/assets/metro-icon.png'
 import '@/components/game/DynamicMetro.css'
 
+const preloadMetro = new Image()
+preloadMetro.src = '/src/assets/metro-icon.png'
+
 const DynamicMetro = ({ journey, progressPercent, step }) => {
   const numberOfStations = journey.length + 1
 

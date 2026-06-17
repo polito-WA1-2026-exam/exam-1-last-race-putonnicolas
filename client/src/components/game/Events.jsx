@@ -62,7 +62,7 @@ const Events = ({ journey, onClose, stations }) => {
 
   return (
     <div className="position-fixed top-0 start-0 w-100 h-100 d-flex justify-content-center align-items-center arcade-overlay">
-      <Card className="bg-arcade-panel border-0 rounded-4 shadow-lg p-3 arcade-modal-card">
+      <Card className="bg-arcade-panel border-0 rounded-4 shadow-lg p-5 arcade-modal-card">
         <Card.Body className="d-flex flex-column align-items-center w-100 p-0">
           <div className="text-center arcade-content-narrow">
             <h2 className="arcade-title mb-2 fw-bold text-info arcade-title-md">
@@ -73,7 +73,7 @@ const Events = ({ journey, onClose, stations }) => {
             </p>
           </div>
 
-          <div className="w-100 my-4 px-2">
+          <div className="w-100 m-4 px-2">
             <DynamicMetro journey={journey} step={step} progressPercent={progressPercent} />
           </div>
 
