@@ -1,13 +1,13 @@
 import subwayImg from '@/assets/subway.png'
 import { STRINGS } from '@/constants/strings.js'
 import { Button, Col, Row } from 'react-bootstrap'
-import '@/components/landing/LandingHero.css'
+import '@/components/landing/LandingHero/LandingHero.css'
 import '@/styles/shared/Button.css'
 
 const LandingHero = () => {
   return (
-    <Row className="align-items-center mb-5 gx-5">
-      <Col lg={6} className="mb-5 mb-lg-0">
+    <Row className="align-items-center mb-5 mt-4 gx-5">
+      <Col lg={7} className="mb-5 mb-lg-0">
         <div className="season-badge">
           {STRINGS.home.badge}
         </div>
@@ -32,7 +32,7 @@ const LandingHero = () => {
         </div>
       </Col>
 
-      <Col lg={6}>
+      <Col lg={5}>
         <img
           src={subwayImg}
           alt="Neon Subway"

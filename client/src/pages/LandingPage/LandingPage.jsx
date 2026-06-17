@@ -1,13 +1,13 @@
 import { Container, Row } from 'react-bootstrap'
 import HowToPlay from '@/components/landing/HowToPlay/HowToPlay.jsx'
-import HomeHero from '@/components/landing/HomeHero.jsx'
+import LandingHero from '@/components/landing/LandingHero/LandingHero.jsx'
 import '@/pages/LandingPage/LandingPage.css'
 
 const LandingPage = () => {
   return (
     <Container fluid className="landing-page-container">
       <Row>
-        <HomeHero />
+        <LandingHero />
       </Row>
       <Row>
         <HowToPlay />

@@ -15,7 +15,7 @@ const HowToPlay = () => {
 
       <Row className="g-4">
         <Col lg={8}>
-          <div className="phases-panel p-4 p-md-5 h-100 grainy">
+          <div className="phases-panel p-4 h-100 grainy">
             <h3 className="phases-title mb-4">{phasesSection.title}</h3>
 
             <Row className="g-3">
@@ -36,7 +36,7 @@ const HowToPlay = () => {
         </Col>
 
         <Col lg={4}>
-          <div className="coin-panel p-4 p-md-5 d-flex flex-column h-100">
+          <div className="coin-panel p-4 d-flex flex-column h-100">
             <h3 className="coin-title mb-3">{coinSystem.title}</h3>
             <p className="coin-desc mb-4">{coinSystem.description}</p>
 
@@ -50,9 +50,9 @@ const HowToPlay = () => {
       </Row>
       <Row className="mt-4">
         <Col xs={12}>
-          <div className="network-panel p-4 p-md-5 grainy">
+          <div className="network-panel p-4 grainy">
             <Row className="align-items-center gx-5">
-              <Col md={5} lg={4} className="mb-4 mb-md-0">
+              <Col md={5} lg={4} className="mb-4">
                 <img src={mapImg} alt="Network Map" className="network-map-img img-fluid" />
               </Col>
 

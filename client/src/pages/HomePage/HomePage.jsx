@@ -12,13 +12,13 @@ const HomePage = () => {
   const navigate = useNavigate()
 
   return (
-    <Container fluid className="py-4 mt-3 md-0">
+    <Container fluid className="py-4 mt-3">
       <Row className="justify-content-center mb-3">
         <Col xs={12} md={8} lg={6}>
-          <Card className="bg-arcade-panel border-0 rounded-4 shadow-lg text-center p-4 p-md-5 arcade-hero-card">
+          <Card className="bg-arcade-panel border-0 rounded-4 shadow-lg text-center p-4 arcade-hero-card">
             <Card.Body className="d-flex flex-column align-items-center">
               <h2 className="text-white mb-4 home-welcome-title">
-                Welcome back, <br />
+                {STRINGS.home.welcome} <br />
                 <span className="text-info fw-bold arcade-title arcade-title-lg">
                   {user.username.toUpperCase()}
                 </span>

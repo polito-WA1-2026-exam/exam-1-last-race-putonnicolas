@@ -54,8 +54,8 @@ const LeaderboardPage = () => {
   }
 
   return (
-    <Container fluid className="vh-100 d-flex justify-content-center align-items-center p-2 p-md-4 overflow-hidden">
-      <Card className="bg-arcade-panel border-0 rounded-4 shadow-lg p-3 p-md-4 d-flex flex-column arcade-modal-card-full">
+    <Container fluid className="vh-100 d-flex justify-content-center align-items-center p-2 overflow-hidden">
+      <Card className="bg-arcade-panel border-0 rounded-4 shadow-lg p-3 d-flex flex-column arcade-modal-card-full">
         <Card.Body className="d-flex flex-column align-items-center w-100 p-0 h-100">
           <div className="text-center mb-3 flex-shrink-0">
             <h1 className="arcade-title fw-bold text-info mb-1 arcade-title-lg">
@@ -88,7 +88,7 @@ const LeaderboardPage = () => {
                 const isHighlightedUser = isCurrentUser && rank === userRank
 
                 const rowClasses = [
-                  'd-flex justify-content-between align-items-center p-2 px-md-3 rounded-3',
+                  'd-flex justify-content-between align-items-center p-2 rounded-3',
                   isTop3 ? 'leaderboard-row-top3' : '',
                   isHighlightedUser ? 'leaderboard-row-user' : '',
                   isTop3 ? 'leaderboard-row-bordered' : '',

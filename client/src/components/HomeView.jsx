@@ -12,12 +12,12 @@ const HomePage = () => {
   
   return (
     <>
-      <Container fluid className="py-4 mt-3 md-0">
+      <Container fluid className="py-4 mt-3">
           {/* Launch game & leaderboard */}
           <Row className="justify-content-center mb-3">
             <Col xs={12} md={8} lg={6}>
               <Card 
-                className="bg-arcade-panel border-0 rounded-4 shadow-lg text-center p-4 p-md-5 arcade-hero-card"
+                className="bg-arcade-panel border-0 rounded-4 shadow-lg text-center p-4 arcade-hero-card"
               >
                 <Card.Body className="d-flex flex-column align-items-center">
                   

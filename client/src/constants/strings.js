@@ -12,6 +12,7 @@ export const STRINGS = {
     rulesTitle: "HOW TO PLAY?",
     newGame: "NEW GAME",
     leaderboard: "LEADERBOARD",
+    welcome: "Welcome back,",
 
     phasesSection: {
       title: "THE 4 PHASES",
