@@ -1,0 +1,55 @@
+.leaderboard-header-col-rank {
+  width: 15%;
+  font-size: 0.8rem;
+}
+
+.leaderboard-header-col-player {
+  width: 55%;
+  font-size: 0.8rem;
+}
+
+.leaderboard-header-col-score {
+  width: 30%;
+  font-size: 0.8rem;
+}
+
+.leaderboard-rank-cell {
+  width: 15%;
+}
+
+.leaderboard-player-cell {
+  width: 55%;
+  letter-spacing: 1px;
+}
+
+.leaderboard-player-cell-top3 {
+  font-size: 1.2rem;
+}
+
+.leaderboard-player-cell-default {
+  font-size: 1.1rem;
+}
+
+.leaderboard-score-cell {
+  width: 30%;
+}
+
+.leaderboard-score-cell-top3 {
+  font-size: 1.5rem;
+}
+
+.leaderboard-score-cell-default {
+  font-size: 1.2rem;
+}
+
+.leaderboard-coin-icon {
+  font-size: 1rem;
+}
+
+.leaderboard-back-btn {
+  font-size: 1.1rem;
+}
+
+.leaderboard-row-bordered {
+  border: 1px solid var(--color-border-subtle);
+}

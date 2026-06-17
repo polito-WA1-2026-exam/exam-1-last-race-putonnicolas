@@ -1,0 +1,16 @@
+.home-welcome-title {
+  font-size: 1.8rem;
+}
+
+.home-actions {
+  max-width: 350px;
+}
+
+.home-join-btn {
+  font-size: 1.2rem;
+  letter-spacing: 1px;
+}
+
+.home-leaderboard-btn {
+  font-size: 1.1rem;
+}

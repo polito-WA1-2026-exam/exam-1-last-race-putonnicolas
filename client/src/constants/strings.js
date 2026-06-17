@@ -1,7 +1,7 @@
 export const STRINGS = {
   header: {
     logout: "LOGOUT",
-    launchGame : "LAUNCH A GAME"
+    launchGame: "LAUNCH A GAME"
   },
   home: {
     badge: "JOIN THE GAME NOW!",
@@ -10,9 +10,9 @@ export const STRINGS = {
     btnJoin: "JOIN THE RACE",
     startingCoins: "20 STARTING COINS",
     rulesTitle: "HOW TO PLAY?",
-    newGame: "🎮 NEW GAME",
+    newGame: "NEW GAME",
     leaderboard: "LEADERBOARD",
-    
+
     phasesSection: {
       title: "THE 4 PHASES",
       setup: {
@@ -28,23 +28,23 @@ export const STRINGS = {
       execution: {
         num: "03",
         title: "Execution",
-        description: "Watch the trains move in real-time."
+        description: "Watch the trains move and the events occur in real-time."
       },
       result: {
         num: "04",
         title: "Result",
-        description: "Check your rank and collect coins."
+        description: "Check your rank and collect coins!"
       }
     },
 
     coinSystem: {
       title: "THE COIN SYSTEM",
-      description: "Every racer starts with 20 golden coins. Spend them wisely on shortcuts, speed boosts, or sabotage!"
+      description: "Every racer starts with 20 golden coins. But be cautious, many events may occur during your journey!"
     },
 
     networkSection: {
       title: "THE NETWORK",
-      description: "Navigate through 12 unique stations, each with its own transit speed and risks. Some stations are hubs for bonus coins, while others are notorious for delays. Study the map carefully during the planning phase!",
+      description: "Inspired by the real subway network from the French city of Lyon, this game allows you to navigate through 12 unique stations, each with its own transit speed and risks. Some stations are hubs for bonus coins, while you may not like other ones... Study the map carefully during the planning phase!",
       badgeTime: "90 SEC LIMIT",
       badgeStations: "12 STATIONS"
     }
@@ -61,33 +61,35 @@ export const STRINGS = {
     end: "DESTINATION",
     availableSegments: "Available segments",
     submitPath: "Submit path",
-    path: "Choosed path",
-    noPath: "No path choosed yet... choose some stations!",
+    path: "Chosen path",
+    noPath: "No path chosen yet... pick some stations!",
     startGame: "START THE GAME",
     readyToPlay: "READY TO PLAY?",
-    readyToPlayDesc: "Look at the map and memorize it!\n\nOnce you're ready, start the timer you'll have 90 seconds to plan your route!",
-    validPath: "Well done! You killed it 😎",
+    readyToPlayDesc: "Look at the map and memorize it!\n\nOnce you're ready, start the timer. You'll have 90 seconds to plan your route!",
+    validPath: "Well done! You nailed it!",
     unvalidPath: "Invalid route! This path does not comply with the network rules.",
     result: {
-      newRecord: "🔥 New Record ! 🔥",
+      newRecord: "New Record!",
       victory: "Victory!",
       defeat: "You lose...",
-      leaderboard: "See leaderboard ➔",
-      tryAgain: "Try again !",
+      leaderboard: "See leaderboard",
+      tryAgain: "Try again!",
       continue: "Continue",
-      finalScore: "Final score :"
+      finalScore: "Final score:"
     },
     events: {
       title: "Checking your path...",
       description: "Many events happen in this subway...\nMay the odds be in your favor!",
       continueButton: "Continue...",
-      closeButton: "See the results ✨",
+      closeButton: "See the results",
       station: "CURRENT STATION",
       eventTitle: "THE EVENT",
-      win: "You got lucky! : +",
-      lose: "Ohhh no... : ",
+      impact: "IMPACT",
+      win: "You got lucky!: +",
+      lose: "Oh no...: ",
       finalStation: "You reached the final station! Well done!",
-      terminus: "Terminus"    
+      terminus: "Terminus",
+      unknownStation: "Unknown station"
     }
   },
   leaderboard: {
@@ -97,13 +99,6 @@ export const STRINGS = {
     rank: "RANK",
     player: "PLAYER",
     score: "SCORE",
-    back: "➔ BACK TO HOME",
+    back: "BACK TO HOME",
   }
 };
-
-export const GAME_PHASES = Object.freeze({
-  SETUP: 'SETUP', // Full map with connections, no finish and start stations
-  PLANNING: 'PLANNING', // Map without connections, player need to create path
-  EXECUTION: 'EXECUTION', // Apply the events or show that path is unvalid
-  RESULT: 'RESULT' // Pop-up with result (coins or lose) 
-})

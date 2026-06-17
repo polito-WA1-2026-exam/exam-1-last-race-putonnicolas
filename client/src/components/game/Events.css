@@ -1,0 +1,13 @@
+.event-impact-label {
+  font-size: 0.75rem;
+  letter-spacing: 1px;
+}
+
+.event-description {
+  font-size: 1.1rem;
+  font-style: italic;
+}
+
+.event-subtitle {
+  font-size: 1rem;
+}

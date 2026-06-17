@@ -1,0 +1,128 @@
+.arcade-overlay {
+  background-color: var(--color-bg-overlay);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  z-index: 9999;
+}
+
+.arcade-overlay-light {
+  background-color: var(--color-bg-overlay-light);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  z-index: 9999;
+}
+
+.arcade-modal-card {
+  max-width: 800px;
+  width: 95%;
+  border-top: var(--border-accent-top);
+}
+
+.arcade-modal-card-full {
+  max-width: 800px;
+  width: 100%;
+  max-height: 95vh;
+  border-top: var(--border-accent-top);
+}
+
+.arcade-modal-card-sm {
+  max-width: 450px;
+  width: 90%;
+}
+
+.arcade-modal-card-victory {
+  border-top: 4px solid var(--color-secondary);
+}
+
+.arcade-modal-card-defeat {
+  border-top: 4px solid var(--color-danger);
+}
+
+.arcade-hero-card {
+  border-top: var(--border-accent-top);
+  background-color: var(--color-bg-overlay);
+  box-shadow: var(--shadow-lg);
+}
+
+.arcade-inset-panel {
+  background-color: var(--color-bg-inset);
+  box-shadow: var(--shadow-inset);
+}
+
+.arcade-inset-panel-bordered {
+  background-color: var(--color-bg-inset);
+  box-shadow: var(--shadow-inset);
+  border: 1px solid var(--color-secondary-border);
+}
+
+.arcade-section-divider {
+  border-color: var(--color-border-subtle) !important;
+}
+
+.arcade-title-lg {
+  font-size: 2.5rem;
+  letter-spacing: 2px;
+}
+
+.arcade-title-md {
+  font-size: 2.2rem;
+  letter-spacing: 1px;
+}
+
+.arcade-subtitle {
+  font-size: 0.9rem;
+}
+
+.arcade-content-narrow {
+  max-width: 500px;
+}
+
+.arcade-label-sm {
+  font-size: 0.75rem;
+  letter-spacing: 1px;
+}
+
+.arcade-btn-lg {
+  font-size: 1.1rem;
+  letter-spacing: 1px;
+}
+
+.btn-arcade-outline {
+  background-color: var(--color-secondary-muted) !important;
+  border: 1px solid var(--color-secondary-border-strong) !important;
+}
+
+.effect-glow-success {
+  text-shadow: 0 0 10px var(--color-success-glow);
+}
+
+.effect-glow-danger {
+  text-shadow: 0 0 10px var(--color-danger-glow);
+}
+
+.rank-gold {
+  color: var(--color-rank-gold);
+  text-shadow: 0 0 10px var(--color-rank-gold-glow);
+}
+
+.rank-silver {
+  color: var(--color-rank-silver);
+  text-shadow: 0 0 10px var(--color-rank-silver-glow);
+}
+
+.rank-bronze {
+  color: var(--color-rank-bronze);
+  text-shadow: 0 0 10px var(--color-rank-bronze-glow);
+}
+
+.rank-default {
+  color: var(--color-secondary);
+}
+
+.leaderboard-row-top3 {
+  background-color: var(--color-top3-highlight);
+}
+
+.leaderboard-row-user {
+  background-color: var(--color-user-highlight);
+}

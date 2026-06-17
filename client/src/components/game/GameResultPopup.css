@@ -1,0 +1,23 @@
+.result-title {
+  font-size: 2.5rem;
+}
+
+.result-message {
+  font-size: 1.1rem;
+}
+
+.result-score-label {
+  font-size: 0.7rem;
+}
+
+.result-score-value {
+  font-size: 2.5rem;
+}
+
+.result-continue-btn {
+  font-size: 1.2rem;
+}
+
+.result-record-badge {
+  letter-spacing: 1px;
+}

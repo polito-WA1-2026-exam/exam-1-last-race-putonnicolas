@@ -1,0 +1,25 @@
+.app-viewport {
+  background-color: var(--color-bg-base);
+  min-height: 100vh;
+  color: var(--color-text-main);
+  display: flex;
+  flex-direction: column;
+}
+
+main.container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+html, body {
+  background-color: var(--color-bg-base);
+  overscroll-behavior-y: none;
+}
+
+.grainy {
+  background:
+    linear-gradient(var(--color-bg-grain), var(--color-bg-grain)),
+    url('../assets/noise-light.png');
+  background-repeat: repeat;
+}

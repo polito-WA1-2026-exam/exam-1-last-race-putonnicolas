@@ -1,0 +1,59 @@
+.login-page-container {
+  min-height: calc(80vh);
+}
+
+.login-card {
+  background-color: var(--color-bg-surface);
+  padding: 3rem 2.5rem;
+  border-radius: var(--radius-card);
+  width: 100%;
+  max-width: 450px;
+  box-shadow: var(--shadow-card);
+  border: 1px solid var(--color-primary-border);
+}
+
+.login-title {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  color: var(--color-text-main);
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+.login-p {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  color: var(--color-text-main);
+  font-weight: 200;
+  letter-spacing: 1px;
+}
+
+.custom-label {
+  font-family: 'Be Vietnam Pro', sans-serif;
+  color: var(--color-primary);
+  font-weight: 700;
+  font-size: 0.8rem;
+  letter-spacing: 0.5px;
+}
+
+.custom-input {
+  background-color: var(--color-bg-base) !important;
+  border: 2px solid var(--color-border-input) !important;
+  color: var(--color-text-main) !important;
+  border-radius: var(--radius-input);
+  padding: 12px 16px;
+  font-family: 'Be Vietnam Pro', sans-serif;
+}
+
+.custom-input:focus {
+  border-color: var(--color-primary) !important;
+  box-shadow: 0 0 8px var(--color-primary-glow) !important;
+}
+
+.arcade-error-msg {
+  font-family: 'Be Vietnam Pro', sans-serif;
+  font-weight: 600;
+  font-size: 0.9rem;
+  background-color: var(--color-error-bg);
+  padding: 8px;
+  border-radius: 8px;
+  border: 1px solid var(--color-error-border);
+}

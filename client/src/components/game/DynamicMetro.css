@@ -1,0 +1,44 @@
+.metro-track {
+  height: 4px;
+  background-color: var(--color-track);
+  border-radius: 2px;
+}
+
+.metro-progress {
+  height: 4px;
+  background-color: var(--color-secondary);
+  transition: width 0.6s ease-in-out;
+}
+
+.metro-station-dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 3px solid var(--color-bg-base);
+  transition: background-color 0.3s ease-in-out 0.3s;
+  z-index: 2;
+}
+
+.metro-station-dot-active {
+  background-color: var(--color-secondary);
+}
+
+.metro-station-dot-inactive {
+  background-color: var(--color-track);
+}
+
+.metro-icon {
+  width: 50px;
+  height: auto;
+  filter: var(--shadow-drop);
+}
+
+.metro-container {
+  height: 40px;
+}
+
+.metro-train {
+  transition: left 0.6s ease-in-out;
+  transform: translate(-50%, -130%);
+  z-index: 10;
+}

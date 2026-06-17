@@ -1,0 +1,11 @@
+.small-card {
+  user-select: none;
+}
+
+.small-card-station-text {
+  font-size: 0.75rem;
+}
+
+.small-card-separator {
+  font-size: 0.6rem;
+}

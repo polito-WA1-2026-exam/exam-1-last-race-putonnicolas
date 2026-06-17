@@ -38,8 +38,6 @@ app.use(passport.initialize())
 app.use(passport.authenticate("session"));
 
 // Stores the map in the server's cache since it will be the same for every player.
-
-
 console.log("[SERVER] Loading map & valids stations pairs...");
 const map = await getMap();
 
@@ -94,37 +92,15 @@ app.get('/api/game/setup', isLoggedIn, (req, res) => {
     const randomIndex = Math.floor(Math.random() * validPairs.length);
     const selectedPair = validPairs[randomIndex];
 
-    // For testing purposes
     req.session.currentGame = {
-      startStationId: 1,
-      endStationId: 7
+      startStationId: selectedPair.startStation.id,
+      endStationId: selectedPair.endStation.id
     };
-    
-    const startStation = {
-      id: 1,
-      name: "Charpennes"
-    }
-
-    const endStation =
-    {
-      id: 7,
-      name: "Saxe-Gambetta"
-    }
-
-    const payload = {
-      startStation:startStation,
-      endStation: endStation
-    }
-
-    // req.session.currentGame = {
-    //   startStationId: selectedPair.startStation.id,
-    //   endStationId: selectedPair.endStation.id
-    // };
  
-    // const payload = {
-    //   startStation: selectedPair.startStation,
-    //   endStation: selectedPair.endStation
-    // }
+    const payload = {
+      startStation: selectedPair.startStation,
+      endStation: selectedPair.endStation
+    }
 
     if (sendMap) payload.network = map
 

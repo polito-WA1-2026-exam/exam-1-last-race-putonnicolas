@@ -1,29 +1,31 @@
+import { BASE_URL } from './client.js'
+
 export async function getGameSetup(getMap) {
-  const response = await fetch(`http://localhost:3001/api/game/setup?sendMap=${getMap}`, {
+  const response = await fetch(`${BASE_URL}/api/game/setup?sendMap=${getMap}`, {
     credentials: "include"
-  });
+  })
 
   if (response.ok) {
-    return await response.json();
-  } else {
-    throw new Error("Impossible de récupérer la map et le setup du jeu.");
+    return await response.json()
   }
+
+  throw new Error("Unable to retrieve the game map and setup.")
 }
 
 export async function submitPath(routeArray) {
-  const response = await fetch('http://localhost:3001/api/game/submit', {
+  const response = await fetch(`${BASE_URL}/api/game/submit`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
     },
     credentials: "include",
     body: JSON.stringify({ route: routeArray })
-  });
+  })
 
   if (response.ok) {
-    return await response.json();
-  } else {
-    const errorData = await response.json().catch(() => ({}));
-    throw new Error(errorData.error || "Impossible to validate the choosed path.");
+    return await response.json()
   }
+
+  const errorData = await response.json().catch(() => ({}))
+  throw new Error(errorData.error || "Unable to validate the chosen path.")
 }

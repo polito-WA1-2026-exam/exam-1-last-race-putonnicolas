@@ -1,15 +1,14 @@
-import { useContext } from 'react';
 import { Container, Row, Col, Card } from 'react-bootstrap';
 import HowToPlay from './Reusable/HowToPlay.jsx';
 import {Button} from 'react-bootstrap';
-import "../css/HomeView.css"
-import UserContext from '../contexts/UserProvider.jsx';
+import "../css/HomePage.css"
 import { useNavigate } from 'react-router';
 import { STRINGS } from '../constants/strings.js';
+import useUser from '../hooks/useUser.js';
 
-const HomeView = () => {
-  const userContext = useContext(UserContext)
+const HomePage = () => {
   const navigate = useNavigate()
+  const { user } = useUser()
   
   return (
     <>
@@ -18,19 +17,14 @@ const HomeView = () => {
           <Row className="justify-content-center mb-3">
             <Col xs={12} md={8} lg={6}>
               <Card 
-                className="bg-arcade-panel border-0 rounded-4 shadow-lg text-center p-4 p-md-5"
-                style={{ 
-                  borderTop: '4px solid #00D1FF',
-                  backgroundColor: 'rgba(15, 10, 31, 0.8)',
-                  boxShadow: '0 8px 32px rgba(0, 0, 0, 0.5)'
-                }}
+                className="bg-arcade-panel border-0 rounded-4 shadow-lg text-center p-4 p-md-5 arcade-hero-card"
               >
                 <Card.Body className="d-flex flex-column align-items-center">
                   
                   <h2 className="text-white mb-4" style={{ fontSize: '1.8rem' }}>
                     Welcome back, <br/>
-                    <span className="text-info fw-bold arcade-title" style={{ fontSize: '2.5rem', letterSpacing: '2px' }}>
-                      {userContext.user.username.toUpperCase()}
+                    <span className="text-info fw-bold arcade-title-lg">
+                      {user?.username?.toUpperCase()}
                     </span>
                   </h2>
 
@@ -38,18 +32,16 @@ const HomeView = () => {
                     
                     {/* Launch game */}
                     <Button 
-                      className="btn-join-race w-100 py-3 rounded-pill fw-bold shadow" 
+                      className="btn-join-race w-100 py-3 rounded-pill fw-bold shadow arcade-btn-lg" 
                       onClick={() => navigate('/game')}
-                      style={{ fontSize: '1.2rem', letterSpacing: '1px' }}
                     >
                       <span className="text-slide">{STRINGS.home.newGame}</span>
                     </Button>
 
                     {/* LEADERBOARD */}
                     <Button 
-                      className="btn-arcade-login w-100 py-2 rounded-pill fw-bold" 
+                      className="btn-arcade-outline w-100 py-2 rounded-pill fw-bold arcade-btn-lg" 
                       onClick={() => navigate('/leaderboard')}
-                      style={{ fontSize: '1.1rem', backgroundColor: 'rgba(0, 209, 255, 0.1)', border: '1px solid rgba(0, 209, 255, 0.5)' }}
                     >
                       {STRINGS.home.leaderboard}
                     </Button>
@@ -70,4 +62,4 @@ const HomeView = () => {
   )
 }
 
-export default HomeView
+export default HomePage

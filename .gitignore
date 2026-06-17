@@ -1,5 +1,5 @@
 ./server/node_modules
+./client/node_modules
 *.sqlite
 
-TODO.md
 WA1_exam1_LastRace.pdf

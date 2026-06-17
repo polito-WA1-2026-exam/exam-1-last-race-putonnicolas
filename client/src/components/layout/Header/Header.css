@@ -1,0 +1,36 @@
+.custom-navbar {
+  background-color: var(--color-bg-surface);
+  padding: 1rem 0;
+  box-shadow: var(--shadow-navbar);
+  border-radius: 0 0 1em 1em;
+}
+
+.navbar-logo {
+  height: 4rem;
+  width: auto;
+  object-fit: contain;
+}
+
+.btn-arcade-login:hover {
+  background-color: var(--color-primary-hover);
+  color: var(--color-text-main);
+}
+
+.btn-arcade-login:active {
+  transform: translateY(4px);
+  border-bottom: 0px solid transparent;
+  margin-bottom: 4px;
+}
+
+.user-greeting {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  color: var(--color-text-accent);
+  font-weight: 900;
+  margin: 0;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.user-greeting:hover {
+  opacity: 0.7;
+}
