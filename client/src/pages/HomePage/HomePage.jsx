@@ -4,12 +4,11 @@ import '@/pages/HomePage/HomePage.css'
 import '@/styles/shared/Button.css'
 import '@/styles/shared/Arcade.css'
 import useUser from '@/hooks/useUser'
-import { useNavigate } from 'react-router'
+import { Link } from 'react-router'
 import { STRINGS } from '@/constants/strings.js'
 
 const HomePage = () => {
   const { user } = useUser()
-  const navigate = useNavigate()
 
   return (
     <Container fluid className="py-4 mt-3">
@@ -26,15 +25,17 @@ const HomePage = () => {
 
               <div className="d-flex flex-column w-100 gap-3 align-items-center mt-3 home-actions">
                 <Button
+                  as={Link}
+                  to="/game"
                   className="btn-join-race w-100 py-3 rounded-pill fw-bold shadow home-join-btn"
-                  onClick={() => navigate('/game')}
                 >
                   <span className="text-slide">{STRINGS.home.newGame}</span>
                 </Button>
 
                 <Button
+                  as={Link}
+                  to="/leaderboard"
                   className="btn-arcade-login btn-arcade-outline w-100 py-2 rounded-pill fw-bold home-leaderboard-btn"
-                  onClick={() => navigate('/leaderboard')}
                 >
                   {STRINGS.home.leaderboard}
                 </Button>

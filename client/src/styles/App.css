@@ -15,6 +15,7 @@ main.container {
 html, body {
   background-color: var(--color-bg-base);
   overscroll-behavior-y: none;
+  font-family: 'Plus Jakarta Sans', sans-serif !important;
 }
 
 .grainy {

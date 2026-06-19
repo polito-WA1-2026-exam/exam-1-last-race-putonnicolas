@@ -1,7 +1,15 @@
 export const STRINGS = {
   header: {
     logout: "LOGOUT",
+    login: "LOG IN",
     launchGame: "LAUNCH A GAME"
+  },
+  login: {
+    description: "Ready to hit the track again?",
+    password: "PASSWORD",
+    username: "USERNAME / EMAIL",
+    login: "LOGIN",
+    enterUsername: "Enter username",
   },
   home: {
     badge: "JOIN THE GAME NOW!",

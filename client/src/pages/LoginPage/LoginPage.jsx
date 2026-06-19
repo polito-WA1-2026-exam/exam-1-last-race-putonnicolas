@@ -4,6 +4,7 @@ import { useLocation, useNavigate } from "react-router"
 import useUser from '@/hooks/useUser'
 import '@/pages/LoginPage/LoginPage.css'
 import '@/styles/shared/Button.css'
+import { STRINGS } from "@/constants/strings"
 
 const LoginPage = () => {
   const [username, setUsername] = useState("")
@@ -17,7 +18,7 @@ const LoginPage = () => {
   const destination = location.state?.from || "/home"
 
   const doSubmit = async (e) => {
-    e.preventDefault()
+    e.preventDefault() // prevent reloading
     setErrormsg("")
 
     if (!username || !password) {
@@ -38,14 +39,14 @@ const LoginPage = () => {
 
       <div className="login-card">
         <h2 className="login-title text-center mb-2">LOGIN</h2>
-        <p className="login-p text-center mb-4">Ready to hit the track again?</p>
+        <p className="login-p text-center mb-4">{STRINGS.login.description}</p>
 
         <Form onSubmit={doSubmit}>
           <Form.Group className="mb-4" controlId="formBasicEmail">
-            <Form.Label className="custom-label">USERNAME / EMAIL</Form.Label>
+            <Form.Label className="custom-label">{STRINGS.login.username}</Form.Label>
             <Form.Control
               type="text"
-              placeholder="Enter username"
+              placeholder={STRINGS.login.enterUsername}
               value={username}
               className="custom-input"
               onChange={(ev) => setUsername(ev.target.value)}
@@ -53,7 +54,7 @@ const LoginPage = () => {
           </Form.Group>
 
           <Form.Group className="mb-4" controlId="formBasicPassword">
-            <Form.Label className="custom-label">PASSWORD</Form.Label>
+            <Form.Label className="custom-label">{STRINGS.login.password}</Form.Label>
             <Form.Control
               type="password"
               placeholder="••••••••"
@@ -65,7 +66,7 @@ const LoginPage = () => {
 
           <div className="d-grid gap-2 mt-5">
             <Button className="btn-arcade-login" type="submit">
-              LOG IN
+              {STRINGS.login.login}
             </Button>
           </div>
 

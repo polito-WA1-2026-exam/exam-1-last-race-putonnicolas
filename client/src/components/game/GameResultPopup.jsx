@@ -7,15 +7,12 @@ import '@/components/game/GameResultPopup.css'
 import { STRINGS } from '@/constants/strings'
 
 const GameResultPopup = ({
-  show,
   isVictory,
   score,
   isNewRecord,
   message,
   onClose
 }) => {
-  if (!show) return null
-
   return (
     <div className="position-fixed top-0 start-0 w-100 h-100 d-flex justify-content-center align-items-center arcade-overlay-light">
       <Card

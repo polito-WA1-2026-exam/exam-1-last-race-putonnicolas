@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { Container, Card, Button } from 'react-bootstrap'
-import { useNavigate } from 'react-router'
+import { Link } from 'react-router'
 import '@/styles/shared/Game.css'
 import '@/styles/shared/Button.css'
 import '@/styles/shared/Arcade.css'
@@ -24,7 +24,6 @@ const getRankDisplay = (index) => {
 }
 
 const LeaderboardPage = () => {
-  const navigate = useNavigate()
   const { user } = useUser()
   const [scores, setScores] = useState([])
   const [error, setError] = useState('')
@@ -133,8 +132,9 @@ const LeaderboardPage = () => {
           </div>
 
           <Button
+            as={Link}
+            to="/home"
             className="btn-arcade-login w-100 py-3 rounded-pill text-uppercase fw-bold shadow-sm flex-shrink-0 leaderboard-back-btn"
-            onClick={() => navigate('/home')}
           >
             {STRINGS.leaderboard.back}
           </Button>

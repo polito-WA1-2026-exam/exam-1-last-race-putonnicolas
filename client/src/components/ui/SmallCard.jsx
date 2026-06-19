@@ -12,7 +12,7 @@ export const SmallCard = ({ startStation, endStation, id }) => {
           <span
             className="fw-bold text-info text-nowrap small-card-station-text"
           >
-            {startStation?.name || "?"}
+            {startStation.name}
           </span>
           <small className="text-white-50 small-card-separator">
             ↓
@@ -20,7 +20,7 @@ export const SmallCard = ({ startStation, endStation, id }) => {
           <span
             className="fw-bold text-warning text-nowrap small-card-station-text"
           >
-            {endStation?.name || "?"}
+            {endStation.name}
           </span>
         </div>
       </Card.Body>

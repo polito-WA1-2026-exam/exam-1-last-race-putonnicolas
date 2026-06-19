@@ -14,6 +14,7 @@ export default function ProtectedRoute() {
   }
 
   if (!user) {
+    // replace is used to override user's history
     return <Navigate to="/login" state={{ from: location.pathname }} replace />
   }
 

@@ -191,8 +191,7 @@ const GamePage = () => {
         />
       )}
 
-      <GameResultPopup
-        show={gamePhase === GAME_PHASES.RESULT}
+      {gamePhase === GAME_PHASES.RESULT && <GameResultPopup
         isVictory={gameResult.isVictory}
         score={gameResult.score}
         isNewRecord={gameResult.isNewRecord}
@@ -218,7 +217,7 @@ const GamePage = () => {
               setLoading(false)
             })
         }}
-      />
+      />}
     </Container>
   )
 }

@@ -1,10 +1,14 @@
 import subwayImg from '@/assets/subway.png'
 import { STRINGS } from '@/constants/strings.js'
 import { Button, Col, Row } from 'react-bootstrap'
+import useUser from '@/hooks/useUser'
+import { Link } from 'react-router'
 import '@/components/landing/LandingHero/LandingHero.css'
 import '@/styles/shared/Button.css'
 
 const LandingHero = () => {
+  const { user } = useUser()
+
   return (
     <Row className="align-items-center mb-5 mt-4 gx-5">
       <Col lg={7} className="mb-5 mb-lg-0">
@@ -21,7 +25,11 @@ const LandingHero = () => {
         </p>
 
         <div className="hero-actions d-flex flex-wrap align-items-center gap-3">
-          <Button className="btn-join-race">
+          <Button 
+            as={Link} 
+            to={user ? '/home' : '/login'} 
+            className="btn-join-race"
+          >
             <span className="text-slide">{STRINGS.home.btnJoin}</span>
           </Button>
 
