@@ -16,15 +16,12 @@ const Events = ({ journey, onClose, stations }) => {
   }, [onClose])
 
   const handleNextStep = useCallback(() => {
-    setStep((currentStep) => {
-      if (currentStep < journey.length) {
-        return currentStep + 1
-      }
-
+    if (step < journey.length) {
+      setStep((currentStep) => currentStep + 1)
+    } else {
       onCloseRef.current()
-      return currentStep
-    })
-  }, [journey.length])
+    }
+  }, [step, journey.length])
 
   useEffect(() => {
     if (!journey || journey.length === 0) return

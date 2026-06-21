@@ -21,9 +21,11 @@ const fetchAll = (query) => {
 export const getMap = async () => {
   console.log("[DAO] Fetching network map data...");
   try {
-    const stationsRows = await fetchAll("SELECT * FROM stations");
-    const linesRows = await fetchAll("SELECT * FROM lines");
-    const segmentsRows = await fetchAll("SELECT * FROM segments");
+    const [stationsRows, linesRows, segmentsRows] = await Promise.all([
+      fetchAll("SELECT * FROM stations"),
+      fetchAll("SELECT * FROM lines"),
+      fetchAll("SELECT * FROM segments")
+    ])
 
     const stations = stationsRows.map((s) => new Station(s.id, s.name, s.x, s.y));
     const lines = linesRows.map((l) => new Line(l.id, l.name, l.color));

@@ -98,11 +98,11 @@ The application uses SQLite with the following tables:
 | **events** | `id` (PK), `description`, `effect` | Random events that occur during journey execution (effects range from -4 to +4) |
 
 **Initial Data Requirements:**
-- At least 4 metro lines
-- At least 12 stations  
-- At least 3 interchange stations (stations on multiple lines)
-- At least 8 different random events
-- At least 3 registered users (2 with existing game history)
+- At least 4 metro lines ✅
+- At least 12 stations ✅
+- At least 3 interchange stations (stations on multiple lines) ✅
+- At least 8 different random events ✅
+- At least 3 registered users (2 with existing game history) ✅
 
 ## Main React Components
 
@@ -141,24 +141,27 @@ The following user accounts are pre-loaded in the database for testing:
 | Username | Password | Best Score | Notes |
 |----------|----------|-----------|-------|
 | Marc | iLovecats2 | 24 | Top player with existing game history |
-| Raphael | paris | 15 | Mid-tier player with game history |
-| Nicolo | 1l#jf3] | 0 | New player with no games completed |
+| Nicolo | 1l#jf3] | 23 | Mid-tier player with game history |
+| Raphael | paris | 15 | Mid-tier player with game history  |
 
-**Note:** These credentials are seeded from `server/database/setup_db.js` and available after running the database initialization script.
+All other users (Bastien, Lucie, Sophie, Louis, Hugo) have 'test1234' as password.
+
+**Note:** These credentials are seeded from `server/database/setup_db.js`, which is launch on first initialization of the server. 
 
 ## Application Screenshots
 
 ### Leaderboard Page
 Displays the top 10 players globally with ranking icons (🥇🥈🥉) for top 3 players and numeric ranks for others. Current user's rank is highlighted in the leaderboard.
-
+![alt text](./screenshots/leaderboard.png)
 ### Game Page - Planning Phase
 Shows the metro network map with stations and lines. Players have 90 seconds (timer visible) to select a valid route from the start station (highlighted) to the destination station. Available segments are listed on the right side with ability to add/remove from chosen path.
+![alt text](./screenshots/game.png)
 
 ## Use of AI Tools
 
 Throughout development of this application, AI tools (GitHub Copilot) were used for:
 
-- **Code Refactoring** — Unified CSS styling with centralized variables, removed duplicate components
+- **Code Refactoring** — Unified CSS styling with centralized variables, removed duplicate components, CSS animations
 - **Code generation** — CSS sheets, help with graphs algorithms
 - **Assets generation** — Creation of images, svg, logos used for the design
 - **Bug Fixes** — Resolved ESLint errors, fixed invalid CSS functions

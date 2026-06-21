@@ -44,7 +44,7 @@ try {
   await initDatabase();
 } catch (err) {
   console.error("[SERVER] Critical error during database initialization:", err);
-  process.exit(1); // On coupe le serveur si la BDD plante
+  process.exit(1)
 }
 
 // Stores the map in the server's cache since it will be the same for every player.
@@ -72,7 +72,7 @@ app.post('/api/sessions', passport.authenticate("local"), (req, res) => {
 
 // GET /api/sessions/current
 // Purpose: Check if the user is currently logged in
-app.get('/api/sessions/current', isLoggedIn, (req, res) => {
+app.get('/api/sessions/current', (req, res) => {
   if (req.isAuthenticated()) {
     return res.status(200).json(req.user);
   }

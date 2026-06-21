@@ -66,7 +66,7 @@ export const generateAndSave = async () => {
       'utf-8'
     );
     
-    console.log(`[SUCCÈS] Fichier valid_pairs.json généré avec ${validPairs.length} couples !`)
+    console.log(`[SUCCÈS] File valid_pairs.json generated with ${validPairs.length} tuples!`)
     process.exit(0)
   } catch (err) {
     console.error("[ERROR]", err)
@@ -86,6 +86,8 @@ export const isRouteValid = (map, route, startId, endId) =>
   }
 
   let currentLine = null
+  const visitedSegments = new Set()
+
   for (let i = 0; i < route.length - 1; i++)
   {
     const fromStationId = route[i]
@@ -100,6 +102,14 @@ export const isRouteValid = (map, route, startId, endId) =>
       console.log(`[VALIDATION] Such segment does not exist : ${fromStationId} - ${toStationId}`);
       return false
     }
+
+    const segmentKey = [fromStationId, toStationId].sort().join('-')
+    if (visitedSegments.has(segmentKey)) {
+      console.log(`[VALIDATION] Segment used more than once: ${segmentKey}`);
+      return false
+    }
+    visitedSegments.add(segmentKey)
+
     if (currentLine !== null && currentLine != segment.lineId)
     {
       const station = map.stations.find(s => s.id === fromStationId)
